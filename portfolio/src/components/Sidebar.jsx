@@ -7,10 +7,10 @@ export default function Sidebar() {
     </div>
       <div className="sidebar-divider"></div>
       <div className="sidebar-icons">
-        <a href="#" title="Email"><i className="fas fa-envelope"></i></a>
-        <a href="#" title="LinkedIn"><i className="fab fa-linkedin"></i></a>
-        <a href="#" title="GitHub"><i className="fab fa-github"></i></a>
-        <a href="#" title="Instagram"><i className="fab fa-instagram"></i></a>
+        <a href="mailto:kourosh@kourix.me" title="Email"><i className="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/kourosh-esmaeil-tajer/" title="LinkedIn"><i className="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Kourix84" title="GitHub"><i className="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/kourosh__e.t/" title="Instagram"><i className="fab fa-instagram"></i></a>
       </div>
     </aside>
   )
