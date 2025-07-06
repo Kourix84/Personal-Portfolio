@@ -23,7 +23,7 @@ body {
   top: 0;
   width: 70px;
   height: 100vh;
-  background: #555;
+  background: #535353;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -85,6 +85,25 @@ body {
   color: #ffb42a;
 }
 
+@media (max-width: 700px) {
+  .sidebar {
+    width: 50px;
+    font-size: 0.9rem;
+    padding-top: 8px;
+  }
+  .sidebar-logo {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+  .sidebar-vertical {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+  .sidebar-icons {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+}
 .navbar {
   margin-left: 150px;
   padding-top: 26px;
@@ -120,11 +139,11 @@ body {
 }
 @media (min-width: 900px) {
   .hero {
-    flex-direction: row;
-    align-items: flex-start;
-    margin-top: 120px;
-    margin-left: 150px;
-    gap: 70px;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 120px;
+  margin-left: 150px;
+  gap: 70px;
   }
 }
 .hero-photo {
@@ -190,16 +209,12 @@ body {
   pointer-events: none;
 }
 
-/* RESPONSIVE SECTION */
-
-/* Hide squares-pattern after 1200px */
 @media (max-width: 1200px) {
   .squares-pattern {
     display: none !important;
   }
 }
 
-/* Under 900px: Navbar & hero text center */
 @media (max-width: 900px) {
   .sidebar {
     width: 55px;
@@ -216,7 +231,6 @@ body {
     gap: 14px;
     font-size: 15px;
     padding-top: 18px;
-    text-align: center;
   }
   .hero {
     margin-left: 0;
@@ -226,87 +240,21 @@ body {
     gap: 32px;
     width: 100vw;
     padding: 0 3vw;
-    text-align: center;
-  }
-  .hero-content, .hero-content h1, .hero-content p {
-    text-align: center;
-  }
-}
-
-/* Under 720px: Sidebar to bottom (only icons), everything centered */
-@media (max-width: 720px) {
-  .sidebar {
-    position: fixed;
-    bottom: 0;
-    top: unset;
-    left: 0;
-    width: 100vw;
-    height: 48px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    z-index: 40;
-    background: #555;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    box-shadow: 0 -2px 14px rgba(0,0,0,0.09);
-  }
-  .sidebar-logo, .sidebar-vertical, .sidebar-divider {
-    display: none !important;
-  }
-  .sidebar-icons {
-    flex-direction: row;
-    gap: 16px;
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-  .sidebar-icons a {
-    font-size: 1.4rem;
-    padding: 8px;
-  }
-  .navbar, .hero, .hero-content, .hero-content h1, .hero-content p {
-    text-align: center !important;
-    justify-content: center !important;
-    align-items: center !important;
-  }
-  .navbar {
-    width: 100vw;
-    margin: 0 auto;
-    gap: 8px;
-    flex-wrap: wrap;
-    font-size: 13px;
-    padding-top: 12px;
-  }
-  .hero {
-    width: 100vw;
-    padding: 0 4vw;
-    gap: 16px;
   }
   .hero-photo {
-    width: 75vw;
-    height: 20vh;
-    max-width: 150px;
-    max-height: 110px;
-    min-width: 70px;
-    min-height: 60px;
+    width: 55vw;
+    height: 35vh;
+    max-width: 260px;
+    max-height: 180px;
+    min-width: 110px;
+    min-height: 80px;
   }
-  .hero-content {
-    max-width: 96vw;
-    padding: 0 2vw;
-  }
-  .hero-content h1 {
-    font-size: 1.5rem;
-  }
-  .hero-content p {
-    font-size: 1rem;
-  }
-  .hero-buttons {
-    gap: 12px;
+  .squares-pattern {
+    display: none !important;
   }
 }
 
-/* Under 700px: Mini sidebar, smaller nav & hero */
+/* --- Large Phones & Small Tablets --- */
 @media (max-width: 700px) {
   .sidebar {
     width: 40px;
@@ -362,15 +310,10 @@ body {
   }
 }
 
-/* Under 500px: Hide sidebar fully */
+/* --- Small Phones --- */
 @media (max-width: 500px) {
   .sidebar {
     display: none !important;
-  }
-  .navbar, .hero, .hero-content, .hero-content h1, .hero-content p {
-    text-align: center !important;
-    justify-content: center !important;
-    align-items: center !important;
   }
   .navbar {
     margin-left: 0;
@@ -419,7 +362,7 @@ body {
   }
 }
 
-/* Extra Small: Watch-sized screens */
+/* --- Extra Small Phones / Watch-Sized Screens --- */
 @media (max-width: 375px) {
   .navbar {
     font-size: 9.5px;
@@ -453,3 +396,4 @@ body {
     font-size: 0.85rem;
   }
 }
+
