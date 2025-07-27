@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 // Import your images here
 import img1 from '../assets/img.jpg';
-import img2 from '../assets/img_1468.jpg';
-import img3 from '../assets/img_1491.jpg';
-import img4 from '../assets/img_1518.jpg';
-import img5 from '../assets/img_1549.jpg';
+import img2 from '../assets/IMG_1468.jpg';
+import img3 from '../assets/IMG_1491.jpg';
+import img4 from '../assets/IMG_1518.jpg';
+import img5 from '../assets/IMG_1549.jpg';
 // Add as many as you want
 
 const images = [
