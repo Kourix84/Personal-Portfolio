@@ -7,7 +7,7 @@ export default function App() {
     <div>
       <Sidebar />
       <Navbar />
-      <Carousel3D />
+      {/* <Carousel3D /> */}
     </div>
   )
 }
