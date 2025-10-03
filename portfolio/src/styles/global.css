@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 
 body {
-  background: #212121;
+  background: #1A1A1A;
   color: #fff;
   margin: 0;
   overflow: hidden;
@@ -156,7 +156,7 @@ body {
 }
 
 .hero-photo {
-  width: 25vw;
+  width: 30vw;
   height: 50vh;
   background: #53c6f3;
   border-radius: 18px;
