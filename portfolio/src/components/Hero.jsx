@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="hero" aria-label="Intro">
       <div className="hero__card">
         <h1 className="hero__title">
-          <span className="hero__title--accent">Hey,</span> I’m Kourosh
+          Hey, I’m Kourosh
         </h1>
 
         <p className="hero__body">

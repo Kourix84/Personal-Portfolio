@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import About from './contact'
+import Contact from './contact'
 import './styles/global.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
