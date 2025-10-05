@@ -1,0 +1,36 @@
+/* You can put these in App.css or global.css */
+.app{
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* focal point you can tune */
+:root{
+  --focal-x: 78%;   /* move right/left (0% left … 100% right) */
+  --focal-y: 72%;   /* move up/down   (0% top  … 100% bottom) */
+}
+
+/* background photo layer */
+.bg-photo{
+  position: fixed;
+  inset: 0;               /* cover the viewport */
+  width: 125%;
+  height: 105%;
+  object-fit: cover;      /* fills without distortion */
+  object-position: var(--focal-x) var(--focal-y); /* keep hands visible */
+  z-index: -1;            /* behind everything */
+  will-change: object-position;
+}
+
+/* Sidebar offset is already handled in your layout; nothing else to do */
+
+/* Optional: adjust focal point on very wide or very tall screens */
+@media (max-aspect-ratio: 4/5){
+  /* Tall phones – slide focus lower so hands don’t crop */
+  :root{ --focal-y: 82%; }
+}
+@media (min-aspect-ratio: 16/9){
+  /* Very wide – a bit more to the right */
+  :root{ --focal-x: 82%; }
+}
