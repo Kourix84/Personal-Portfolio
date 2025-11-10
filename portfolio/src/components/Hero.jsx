@@ -10,7 +10,7 @@ export default function Hero() {
 
         <ul className="hero__list" role="list">
           <li>
-            student at Fontys University of Applied Sciences with a focus on front-end development and mobile app development
+            Student at Fontys University of Applied Sciences with a focus on front-end development and mobile app development
           </li>
           <li>
             Front-End Development (React, Next.js and Vite)
