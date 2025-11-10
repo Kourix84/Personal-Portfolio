@@ -9,34 +9,33 @@
   --glass-stroke: rgba(255, 255, 255, 0.24);
   --accent: #f7a53b;
   --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+
+  /* Layout constants */
+  --sidebar-w: 70px;
+  --sidebar-w-sm: 58px;
+  --mobile-bar-h: 64px;
+  --navbar-h: 56px;
+  --navbar-h-sm: 48px;
 }
 
 /* ---------- Global Reset ---------- */
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html,
-body,
-#root {
-  height: 100%;
-}
+html, body, #root { height: 100%; }
 
 body {
   margin: 0;
   font-family: "Playfair", serif;
   background: var(--bg);
   color: var(--text);
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-/* ---------- Sidebar ---------- */
+/* ---------- Sidebar (Desktop / Tablet default) ---------- */
 .sidebar {
   position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 70px;
+  left: 0; top: 0; bottom: 0;
+  width: var(--sidebar-w);
   background: var(--glass);
   color: var(--text);
   display: flex;
@@ -113,10 +112,12 @@ body {
 .navbar {
   position: fixed;
   top: 0;
-  left: 70px;
+  left: var(--sidebar-w);
   right: 0;
+  height: var(--navbar-h);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 18px;
   padding: 12px 18px;
   z-index: 40;
@@ -125,6 +126,8 @@ body {
 .navbar__links {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;           /* lets it wrap on smaller widths */
+  justify-content: center;   /* center by default */
 }
 
 .navbtn {
@@ -137,6 +140,7 @@ body {
   backdrop-filter: blur(3px);
   background: var(--glass);
   transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  white-space: nowrap;
 }
 
 .navbtn:hover {
@@ -149,7 +153,7 @@ body {
 .hero {
   position: relative;
   min-height: 70vh;
-  padding-left: 70px;
+  padding-left: var(--sidebar-w);
   display: grid;
   place-items: center start;
 }
@@ -163,6 +167,7 @@ body {
   border-radius: 18px;
   padding: clamp(16px, 2.4vw, 28px);
   backdrop-filter: blur(3px);
+  box-shadow: var(--shadow);
 }
 
 .hero__title {
@@ -178,7 +183,6 @@ body {
   margin-right: 6px;
 }
 
-/* Old body text (not used anymore but kept for fallback) */
 .hero__body {
   font-size: clamp(14px, 1.35vw, 18px);
   line-height: 1.6;
@@ -213,28 +217,136 @@ body {
   box-shadow: 0 0 0 2px rgba(247, 165, 59, 0.15);
 }
 
-/* ---------- Responsive Tweaks ---------- */
+/* ---------- Large/Tablet Tweaks ---------- */
 @media (max-width: 900px) {
+  .hero__card { margin-top: 22vh; }
+}
+
+/* ---------- Compact Sidebar (≤640px but still desktop layout) ---------- */
+@media (max-width: 640px) and (min-width: 769px) {
+  .sidebar { width: var(--sidebar-w-sm); }
+  .navbar { left: var(--sidebar-w-sm); }
+  .hero { padding-left: var(--sidebar-w-sm); }
+  .navbar__links { gap: 8px; }
+  .navbtn { padding: 6px 10px; font-size: 13px; }
+}
+
+/* =========================================================
+   MOBILE LAYOUT (≤768px)
+   - Sidebar becomes bottom bar (logo + socials horizontal)
+   - Navbar remains centered, slightly smaller
+   - Hero adjusts margins and paddings
+   ========================================================= */
+@media (max-width: 768px) {
+  /* Body gets bottom padding so content doesn't hide behind bottom bar */
+  body {
+    padding-bottom: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Sidebar → Bottom Bar */
+  .sidebar {
+    top: auto;
+    bottom: 0;
+    left: 0; right: 0;
+    width: 100%;
+    height: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom, 0px));
+    padding: 8px max(10px, env(safe-area-inset-left, 12px)) calc(8px + env(safe-area-inset-bottom, 0px)) max(10px, env(safe-area-inset-right, 12px));
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255,255,255,0.18);
+  }
+
+  .sidebar__top,
+  .sidebar__middle,
+  .sidebar__bottom {
+    width: auto;
+    padding: 0;
+  }
+
+  /* Left cluster (Logo + label) */
+  .sidebar__top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sidebar__k { font-size: 28px; }
+
+  /* Hide vertical writing for mobile or replace with inline label */
+  .sidebar__vertical { 
+    display: none; 
+  }
+
+  /* Right cluster (all socials horizontally) */
+  .sidebar__bottom {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    padding: 0;
+  }
+
+  .sidebar__icons {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .sidebar__btn {
+    width: 28px; height: 28px;
+  }
+
+  /* Navbar stays centered + smaller */
+  .navbar {
+    left: 0; right: 0;
+    height: var(--navbar-h-sm);
+    padding: 8px 12px;
+    gap: 12px;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.18), transparent); /* subtle support for contrast */
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+
+  .navbtn {
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 16px;
+  }
+
+  .navbar__links {
+    gap: 8px;
+    justify-content: center;
+  }
+
+  /* Hero adjusts to full width without sidebar left padding */
+  .hero {
+    padding-left: 0;
+    min-height: calc(100vh - var(--navbar-h-sm) - var(--mobile-bar-h) - env(safe-area-inset-bottom, 0px));
+    place-items: start center; /* top-ish and centered horizontally */
+  }
+
   .hero__card {
-    margin-top: 22vh;
+    margin: calc(var(--navbar-h-sm) + 12px) 16px 16px 16px; /* below navbar */
+    max-width: 700px;
+    width: min(100%, 720px);
+    text-align: left;
+  }
+
+  .hero__title {
+    font-size: clamp(24px, 7vw, 36px);
+  }
+
+  .hero__list {
+    font-size: clamp(14px, 4vw, 16px);
+    gap: 8px;
   }
 }
 
-@media (max-width: 640px) {
-  .sidebar {
-    width: 58px;
-  }
-  .navbar {
-    left: 58px;
-  }
-  .hero {
-    padding-left: 58px;
-  }
-  .navbar__links {
-    gap: 8px;
-  }
-  .navbtn {
-    padding: 6px 10px;
-    font-size: 13px;
-  }
+/* ---------- Extra-Small Phones (≤390px) ---------- */
+@media (max-width: 390px) {
+  .navbtn { font-size: 13px; padding: 6px 10px; }
+  .sidebar__k { font-size: 24px; }
+  .sidebar { height: calc(58px + env(safe-area-inset-bottom, 0px)); }
+  .hero__card { margin: calc(var(--navbar-h-sm) + 10px) 12px 12px 12px; }
 }
