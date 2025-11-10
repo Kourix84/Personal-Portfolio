@@ -1,0 +1,68 @@
+#preloader {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: #0b0b0c; /* your dark brand color */
+      z-index: 9999;
+      transition: opacity 400ms ease; /* used for the final fade out */
+      will-change: opacity, transform, background;
+    }
+
+    /* White flash layer (appears on command) */
+    #preloader::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Idle pulsing of your K logo while waiting */
+    .loader-logo {
+      width: 100px;          /* tweak size to taste */
+      height: auto;
+      user-select: none;
+      -webkit-user-drag: none;
+      animation: kPulse 1.6s ease-in-out infinite;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+      transition: transform 500ms ease, filter 500ms ease;
+    }
+
+    @keyframes kPulse {
+      0%   { opacity: 0.45; transform: scale(0.96); }
+      50%  { opacity: 1;    transform: scale(1.04); }
+      100% { opacity: 0.45; transform: scale(0.96); }
+    }
+
+    /* When we trigger the flash: */
+    #preloader.preloader--flash::after {
+      animation: flashBurst var( --flash-duration, 700ms ) ease forwards;
+    }
+
+    /* Slight scale-up of logo during flash for a “bloom” feel */
+    #preloader.preloader--flash .loader-logo {
+      transform: scale(1.08);
+      filter: drop-shadow(0 4px 22px rgba(255,255,255,0.65));
+    }
+
+    @keyframes flashBurst {
+      0%   { opacity: 0; }
+      25%  { opacity: 0.65; }
+      60%  { opacity: 1; }   /* peak white-out */
+      100% { opacity: 0; }   /* fall back to reveal the app below */
+    }
+
+    /* Final fade of the whole overlay */
+    #preloader.preloader--hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Optional: lock scroll while loading */
+    html.preloader-lock,
+    body.preloader-lock {
+      overflow: hidden;
+      height: 100%;
+    } 

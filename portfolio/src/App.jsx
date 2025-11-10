@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar.jsx";
 import Sidebar from "./components/Sidebar.jsx";
 import Hero from "./components/Hero.jsx";
 import heroImg from "./assets/img.jpg";
-
+import Cursor from "./components/Cursor.jsx";
 export default function App() {
   return (
     <div className="app">
@@ -15,6 +15,7 @@ export default function App() {
       <Navbar />
       <Sidebar />
       <Hero />
+      <Cursor />
     </div>
   );
 }
