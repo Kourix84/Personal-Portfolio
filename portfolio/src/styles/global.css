@@ -216,6 +216,105 @@ body {
   box-shadow: 0 0 0 2px rgba(247, 165, 59, 0.15);
 }
 
+
+/* ================== Custom Cursor ================== */
+/* Hide default cursor on pointer devices only */
+@media (hover: hover) and (pointer: fine) {
+  html, body { cursor: none; }
+  a, button, [role="button"], .navbtn, [data-cursor] { cursor: none; }
+}
+
+.cursor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+/* show when active */
+.cursor--active { opacity: 1; }
+
+/* dot: crisp core */
+.cursor__dot {
+  position: fixed;
+  left: 0; top: 0;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--text);
+  box-shadow: 0 0 10px rgba(255,255,255,0.35);
+  transform: translate3d(-100px,-100px,0);
+  will-change: transform;
+  mix-blend-mode: screen; /* looks great on your darkish bg */
+}
+
+/* ring: soft glow that trails */
+.cursor__ring {
+  position: fixed;
+  left: 0; top: 0;
+  width: 36px; height: 36px;
+  border-radius: 999px;
+  transform: translate3d(-100px,-100px,0);
+  will-change: transform;
+  background:
+    radial-gradient(35% 35% at 50% 50%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.1) 60%, rgba(255,255,255,0) 70%),
+    radial-gradient(60% 60% at 50% 50%, rgba(247,165,59,0.35) 0%, rgba(247,165,59,0.05) 60%, rgba(247,165,59,0) 70%);
+  box-shadow:
+    0 0 40px rgba(247,165,59,0.35),
+    0 0 12px rgba(255,255,255,0.18) inset;
+  mix-blend-mode: screen;
+  transition: width 140ms ease, height 140ms ease, opacity 140ms ease, filter 140ms ease;
+}
+
+/* hover growth over interactive elements */
+.cursor--hover .cursor__ring {
+  width: 48px; height: 48px;
+  filter: brightness(1.05) saturate(1.08);
+}
+.cursor--hover .cursor__dot {
+  transform: scale(0.9) translate3d(var(--x,0), var(--y,0), 0);
+}
+
+/* click feedback */
+.cursor--down .cursor__ring {
+  width: 40px; height: 40px;
+  filter: brightness(1.15);
+}
+
+/* ripple animation on click */
+.cursor__ripple {
+  position: fixed;
+  width: 5px; height: 5px;
+  left: 0; top: 0;
+  border-radius: 999px;
+  transform: translate(-2px, -2px);
+  background: var(--accent);
+  box-shadow: 0 0 8px rgba(247,165,59,0.6);
+  animation: cursorRipple 420ms ease-out forwards;
+  mix-blend-mode: screen;
+}
+@keyframes cursorRipple {
+  0%   { opacity: 0.9; transform: translate(-2px, -2px) scale(1); }
+  60%  { opacity: 0.5; transform: translate(-2px, -2px) scale(12); }
+  100% { opacity: 0;   transform: translate(-2px, -2px) scale(18); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cursor__ring,
+  .cursor__dot,
+  .cursor__ripple {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+
+
+/* =========================================================
+   RESPONSIVE STYLES
+   ========================================================= */
 /* ---------- Large/Tablet Tweaks ---------- */
 @media (max-width: 900px) {
   .hero__card { margin-top: 22vh; }
