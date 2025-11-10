@@ -40,8 +40,8 @@ body {
   background: var(--glass);
   color: var(--text);
   display: flex;
-  flex-direction: column;       /* stack items vertically */
-  justify-content: space-between; /* top and bottom sections separate */
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   padding: 16px 0;
   z-index: 50;
@@ -87,7 +87,6 @@ body {
   gap: 10px;
   padding-bottom: 12px;
 }
-
 
 .sidebar__icons {
   display: flex;
@@ -175,14 +174,43 @@ body {
 }
 
 .hero__title--accent {
-  color: var(--accent);
+  color: var(--text);
   margin-right: 6px;
 }
 
+/* Old body text (not used anymore but kept for fallback) */
 .hero__body {
   font-size: clamp(14px, 1.35vw, 18px);
   line-height: 1.6;
   margin: 0;
+}
+
+/* ---------- Bullet List ---------- */
+.hero__list {
+  margin: 12px 0 0 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  font-size: clamp(14px, 1.35vw, 18px);
+  line-height: 1.6;
+}
+
+.hero__list li {
+  position: relative;
+  padding-left: 14px;
+}
+
+.hero__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 2px rgba(247, 165, 59, 0.15);
 }
 
 /* ---------- Responsive Tweaks ---------- */
