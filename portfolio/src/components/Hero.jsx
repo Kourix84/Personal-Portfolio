@@ -5,17 +5,29 @@ export default function Hero() {
     <section className="hero" aria-label="Intro">
       <div className="hero__card">
         <h1 className="hero__title">
-          Hey, I’m Kourosh
+          <span className="hero__title--accent">Hey, I’m Kourosh</span>
         </h1>
 
-        <p className="hero__body">
-          I’m Kourosh, a Media Design student at Fontys University of Applied
-          Sciences with a focus on Mobile App Development. I have experience in
-          UI/UX design, front-end development, and project management. As Vice
-          President of Proxy, the Fontys ICT study association, I coordinate
-          events and manage external communications, bringing strong
-          organisational and teamwork skills to every project.
-        </p>
+        <ul className="hero__list" role="list">
+          <li>
+            Student at Fontys University of Applied Sciences with a focus on front-end development and mobile app development
+          </li>
+          <li>
+            Front-End Development (React, Next.js and Vite)
+          </li>
+          <li>
+            Mobile App Development (Swift, Swift UI)
+          </li>
+          <li>
+            PWA & Responsive Web Apps
+          </li>
+          <li>
+            UI/UX Design & Prototyping
+          </li>
+          <li>
+            Agile Workflow & Project Management
+          </li>
+        </ul>
       </div>
     </section>
   );
