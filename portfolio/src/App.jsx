@@ -1,20 +1,45 @@
 // src/App.jsx
-import React from "react";
+import React, { useState } from "react";
 import "./styles/App.css";
 import Navbar from "./components/Navbar.jsx";
 import Sidebar from "./components/Sidebar.jsx";
-import Hero from "./components/Hero.jsx";
-import heroImg from "./assets/img.jpg";
 import Cursor from "./components/Cursor.jsx";
+import heroImg from "./assets/img.jpg";
+
+import { Routes, Route, useLocation } from "react-router-dom";
+import HomePage from "./pages/HomePage.jsx";
+import ProjectDetail from "./pages/ProjectDetail.jsx";
+
 export default function App() {
+  const location = useLocation();
+  const [isHeroVisible, setIsHeroVisible] = useState(true);
+
+  const isProjectDetail = location.pathname.startsWith("/projects/");
+  const shouldBlurBg = isProjectDetail || (!isProjectDetail && !isHeroVisible);
+
   return (
     <div className="app">
-      {/* background photo as real image so we can control the focal point */}
-      <img className="bg-photo" src={heroImg} alt="" aria-hidden="true" />
+      {/* global background image */}
+      <img
+        src={heroImg}
+        alt=""
+        aria-hidden="true"
+        className={`bg-photo ${shouldBlurBg ? "bg-photo--blur" : ""}`}
+      />
 
       <Navbar />
       <Sidebar />
-      <Hero />
+
+      <main className="page">
+        <Routes>
+          <Route
+            path="/"
+            element={<HomePage onHeroVisibleChange={setIsHeroVisible} />}
+          />
+          <Route path="/projects/:id" element={<ProjectDetail />} />
+        </Routes>
+      </main>
+
       <Cursor />
     </div>
   );

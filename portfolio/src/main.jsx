@@ -1,21 +1,26 @@
 // src/main.jsx
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './styles/global.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import "./styles/global.css";
 
-// --------- CONFIGURE TIMINGS HERE ----------
-const DELAY_BEFORE_FLASH_MS = 1800; // keep loader visible this long before the flash
-const FLASH_DURATION_MS = 700;      // white-bloom duration before revealing the app
-// ------------------------------------------
+// timings unchanged...
+const DELAY_BEFORE_FLASH_MS = 1800;
+const FLASH_DURATION_MS = 700;
 
-const rootElement = document.getElementById('root')
+const rootElement = document.getElementById("root");
 
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
-)
+);
+
+// (keep the rest of your preloader code exactly as you have it below)
+
 
 // Handle the preloader removal with a white flash effect
 function hidePreloaderWithFlash() {
