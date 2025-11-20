@@ -1,13 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <header className="navbar">
       <nav className="navbar__links" aria-label="Primary">
-        <a className="navbtn" href="/">Home</a>
-        <a className="navbtn" href="/projects.html">Projects</a>
-        <a className="navbtn" href="/about.html">About</a>
-        <a className="navbtn" href="/contact.html">Contact</a>
+        {/* Home (top of page) */}
+        <Link className="navbtn" to="/">
+          Home
+        </Link>
+
+        {/* Scroll sections on the home page */}
+        <a className="navbtn" href="/#projects">
+          Projects
+        </a>
+        <a className="navbtn" href="/#about">
+          About
+        </a>
+        <a className="navbtn" href="/#contact">
+          Contact
+        </a>
       </nav>
     </header>
   );
