@@ -20,7 +20,7 @@ export default function Sidebar() {
 
    <a
   className="sidebar__btn"
-  href="/CV-ICT.pdf"
+  href="/CV-Kourosh.pdf"
   target="_blank"
   rel="noreferrer"
   aria-label="Resume"
