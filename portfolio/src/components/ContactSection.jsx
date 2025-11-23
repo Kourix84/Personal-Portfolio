@@ -12,6 +12,12 @@ export default function ContactSection() {
             out.
           </p>
           <p className="section__body">
+            Student Email:{" "}
+            <a href="mailto:k.esmaeiltajer@student.fontys.nl" className="section__link">
+              k.esmaeiltajer@student.fontys.nl
+            </a>
+          </p>
+          <p className="section__body">
             Email:{" "}
             <a href="mailto:hello@kourix.dev" className="section__link">
               hello@kourix.dev
