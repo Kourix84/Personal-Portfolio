@@ -231,8 +231,6 @@ body {
 /* responsive tweaks */
 @media (max-width: 768px) {
   .hero {
-    padding-left: 0;
-    padding-right: 16px;
     min-height: calc(
       100vh - var(--navbar-h-sm) - var(--mobile-bar-h) - env(safe-area-inset-bottom, 0px)
     );
@@ -411,10 +409,6 @@ body {
     left: var(--sidebar-w-sm);
   }
 
-  .hero {
-    padding-left: var(--sidebar-w-sm);
-  }
-
   .navbar__links {
     gap: 8px;
   }
@@ -518,7 +512,6 @@ body {
 
   /* Hero on mobile: top-ish and centred */
   .hero {
-    padding-left: 0;
     min-height: calc(
       100vh - var(--navbar-h-sm) - var(--mobile-bar-h) - env(safe-area-inset-bottom, 0px)
     );
