@@ -73,6 +73,17 @@ export default function ProjectDetail() {
                 GitHub
               </a>
             )}
+            
+            {links.Figma && (
+              <a
+                href={links.Figma}
+                target="_blank"
+                rel="noreferrer"
+                className="navbtn"
+              >
+                Figma
+              </a>
+            )}
 
             <Link className="navbtn navbtn--ghost" to="/#projects">
               ← Back to projects
