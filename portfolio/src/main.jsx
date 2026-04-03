@@ -1,11 +1,9 @@
-// src/main.jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./styles/global.css";
 
-// timings unchanged...
 const DELAY_BEFORE_FLASH_MS = 1800;
 const FLASH_DURATION_MS = 700;
 
@@ -19,27 +17,18 @@ ReactDOM.createRoot(rootElement).render(
   </React.StrictMode>
 );
 
-// (keep the rest of your preloader code exactly as you have it below)
-
-
-// Handle the preloader removal with a white flash effect
 function hidePreloaderWithFlash() {
   const preloader = document.getElementById('preloader')
   if (!preloader) return
 
-  // Step 1: trigger the white flash animation
   preloader.classList.add('preloader--flash')
 
-  // Step 2: after flash ends, fade out and remove
   setTimeout(() => {
-    // fade out overlay
     preloader.classList.add('preloader--hide')
 
-    // unlock scroll
     document.documentElement.classList.remove('preloader-lock')
     document.body.classList.remove('preloader-lock')
 
-    // remove the preloader node after transition completes
     preloader.addEventListener(
       'transitionend',
       () => {
@@ -47,10 +36,9 @@ function hidePreloaderWithFlash() {
       },
       { once: true }
     )
-  }, FLASH_DURATION_MS) // wait for the flash animation length
+  }, FLASH_DURATION_MS) 
 }
 
-// Wait for full page load, then delay, then flash + reveal
 window.addEventListener(
   'load',
   () => {
@@ -60,7 +48,3 @@ window.addEventListener(
   },
   { once: true }
 )
-
-// If you ever want to skip waiting for assets and reveal faster,
-// you could call hidePreloaderWithFlash() immediately after render.
-// hidePreloaderWithFlash()

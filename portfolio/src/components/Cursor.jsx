@@ -1,13 +1,5 @@
 import React, { useEffect, useRef } from "react";
 
-/**
- * K-Comet Cursor
- * - Dot + glow ring that lerps toward the pointer
- * - Slight stretch based on velocity
- * - Grows on hover over [data-cursor], <a>, <button>, .navbtn etc.
- * - Click ripple
- * - Disabled on touch and when prefers-reduced-motion
- */
 export default function Cursor() {
   const rootRef = useRef(null);
   const dotRef = useRef(null);
