@@ -122,6 +122,10 @@ Open the app in your browser.
 - PWAs use caching, so updates may take time to appear.
 - Hard refresh the app (Ctrl+Shift+R or Cmd+Shift+R).
 
+### Still Stuck?
+- Check browser DevTools (Console/Application tab) for errors.
+- Open an issue or contact the maintainer with details.
+
 ---
 ## Licence 
 MIT License
@@ -145,7 +149,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-### Still Stuck?
-- Check browser DevTools (Console/Application tab) for errors.
-- Open an issue or contact the maintainer with details.
-
