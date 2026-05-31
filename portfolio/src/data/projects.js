@@ -6,7 +6,7 @@ const projects = [
     short:
       "PWA companion app for a mystery board game with 150+ interactive questions.",
     role: "Product design, front-end development",
-    tech: ["React", "Vite", "PWA", "IndexedDB" , "Figma"],
+    tech: ["React", "IndexedDB" , "Figma"],
     period: "Feb 2025 – Jun 2025",
     heroImage: "/src/assets/img.jpg", // replace with real image
     summary:
@@ -52,7 +52,7 @@ const projects = [
     short:
       "Concept app and design prototype for discovering recipes based on ingredients with AI assistance.",
     role: "Mobile concept, UX, prototype, Swift Development",
-    tech: ["SwiftUI", "Figma", "AI", "OPENAI"],
+    tech: ["Swift","SwiftUI", "Figma", "OPENAI"],
     period: "Sep 2025 - Oct 2025",
     heroImage: "/src/assets/img.jpg",
     summary:
