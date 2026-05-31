@@ -19,7 +19,6 @@ export default function App() {
 
   return (
     <div className="app">
-      {/* global background image */}
       <img
         src={heroImg}
         alt=""
