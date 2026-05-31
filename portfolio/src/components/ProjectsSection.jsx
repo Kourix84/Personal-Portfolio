@@ -25,7 +25,6 @@ const techIconByLabel = {
   swift: "swift",
   react: "react",
   swiftui: "swiftui",
-  swift: "swift",
 };
 
 const linkLabels = {
