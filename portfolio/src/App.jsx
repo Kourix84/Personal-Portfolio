@@ -6,20 +6,15 @@ import Sidebar from "./components/Sidebar.jsx";
 import Cursor from "./components/Cursor.jsx";
 import heroImg from "./assets/img.jpg";
 
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
-import ProjectDetail from "./pages/ProjectDetail.jsx";
 
 export default function App() {
-  const location = useLocation();
   const [isHeroVisible, setIsHeroVisible] = useState(true);
-
-  const isProjectDetail = location.pathname.startsWith("/projects/");
-  const shouldBlurBg = isProjectDetail || (!isProjectDetail && !isHeroVisible);
+  const shouldBlurBg = !isHeroVisible;
 
   return (
     <div className="app">
-      {/* global background image */}
       <img
         src={heroImg}
         alt=""
@@ -36,7 +31,10 @@ export default function App() {
             path="/"
             element={<HomePage onHeroVisibleChange={setIsHeroVisible} />}
           />
-          <Route path="/projects/:id" element={<ProjectDetail />} />
+          <Route
+            path="*"
+            element={<HomePage onHeroVisibleChange={setIsHeroVisible} />}
+          />
         </Routes>
       </main>
 

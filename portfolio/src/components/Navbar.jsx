@@ -14,6 +14,9 @@ export default function Navbar() {
         <a className="navbtn" href="/#projects">
           Projects
         </a>
+        <a className="navbtn" href="/#stacks">
+          Stacks
+        </a>
         <a className="navbtn" href="/#about">
           About
         </a>

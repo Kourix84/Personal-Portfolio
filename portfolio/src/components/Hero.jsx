@@ -10,15 +10,12 @@ export default function Hero() {
       </h1>
 
       <ul className="hero__list">
-        <li>
-          Student at Fontys University of Applied Sciences with a focus on
-          front-end development and mobile app development
-        </li>
-        <li>Front-End Development (React, Next.js and Vite)</li>
-        <li>Mobile App Development (Swift, Swift UI)</li>
+        <li>Student at Fontys University of Applied Sciences</li>
+        <li>Full Stack Developer (Python, Flask, Fast API and Databases)</li>
+        <li>Front-End Developer (React, Next.js and Vite)</li>
+        <li>Mobile App Developer (Swift, Swift UI)</li>
         <li>PWA &amp; Responsive Web Apps</li>
-        <li>UI/UX Design &amp; Prototyping</li>
-        <li>Agile Workflow &amp; Project Management</li>
+        <li>UI/UX Designer</li>
       </ul>
     </section>
   );
