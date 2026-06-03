@@ -231,10 +231,10 @@ export default function AboutSection() {
               <div className="hobby-intro">
                 <span className="about-copy__marker">Beyond the screen</span>
                 <h3>Hobbies and extra things I do.</h3>
-                <p className="section__body">
+                {/* <p className="section__body">
                   These are the activities that keep me active, focused, and balanced
                   next to my design and development work.
-                </p>
+                </p> */}
               </div>
 
               <div className="hobby-grid">

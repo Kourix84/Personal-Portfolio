@@ -950,6 +950,8 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 1;
+  overflow: hidden;
+  position: relative;
   text-decoration: none;
   white-space: nowrap;
   transition:
@@ -959,11 +961,70 @@
     color 0.18s ease;
 }
 
+.project-card__link-original {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  transition:
+    transform 0.22s cubic-bezier(0.87, 0, 0.13, 1),
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.project-card__link-letters {
+  display: inline-flex;
+  color: var(--accent);
+}
+
+.project-card__link-letter {
+  opacity: 0;
+  transform: translateY(-14px);
+  transition:
+    transform 0.22s cubic-bezier(0.87, 0, 0.13, 1),
+    opacity 0.18s ease;
+}
+
+.project-card__link-letter:nth-child(2n) {
+  transform: translateY(14px);
+}
+
 .project-card__link:hover {
   transform: translateY(-1px);
   border-color: rgba(247, 165, 59, 0.72);
   background: rgba(247, 165, 59, 0.14);
-  color: #ffffff;
+  color: var(--accent);
+}
+
+.project-card__link:hover .project-card__link-original {
+  transform: translateY(100%);
+  background: rgba(247, 165, 59, 0.14);
+  color: var(--accent);
+}
+
+.project-card__link:hover .project-card__link-letter {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--letter-index) * 55ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card__link,
+  .project-card__link-original,
+  .project-card__link-letter {
+    transition: none;
+  }
+
+  .project-card__link:hover .project-card__link-original {
+    transform: none;
+  }
+
+  .project-card__link-letter {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ---------- Tech stack section ---------- */

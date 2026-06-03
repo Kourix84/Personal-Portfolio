@@ -58,6 +58,25 @@ const getProjectLinks = (links = {}) =>
       label: linkLabels[key.toLowerCase()] ?? key,
     }));
 
+const AnimatedLinkLabel = ({ label }) => (
+  <>
+    <span className="project-card__link-original" aria-hidden="true">
+      {label}
+    </span>
+    <span className="project-card__link-letters" aria-hidden="true">
+      {Array.from(label).map((letter, index) => (
+        <span
+          className="project-card__link-letter"
+          key={`${letter}-${index}`}
+          style={{ "--letter-index": index }}
+        >
+          {letter === " " ? "\u00A0" : letter}
+        </span>
+      ))}
+    </span>
+  </>
+);
+
 export default function ProjectsSection() {
   return (
     <section id="projects" className="section section--projects">
@@ -123,8 +142,9 @@ export default function ProjectsSection() {
                         key={link.label}
                         target="_blank"
                         rel="noreferrer"
+                        aria-label={link.label}
                       >
-                        {link.label}
+                        <AnimatedLinkLabel label={link.label} />
                       </a>
                     ))}
                   </div>
