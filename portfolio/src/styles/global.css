@@ -29,6 +29,10 @@ body,
   height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: "Playfair", serif;
@@ -147,11 +151,23 @@ body {
 }
 
 .navbar__links {
+  position: relative;
   display: flex;
-  gap: 12px;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(18, 22, 21, 0.28);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(10px);
 }
 
 .navbtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 8px 20px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 20px;
@@ -171,6 +187,63 @@ body {
   transform: translateY(-1px);
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.6);
+}
+
+.navbar .navbtn {
+  isolation: isolate;
+  min-height: 38px;
+  overflow: hidden;
+  padding: 8px 16px;
+  border-color: transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 700;
+  line-height: 1;
+  transition:
+    transform 0.16s ease,
+    color 0.16s ease;
+}
+
+.navbar .navbtn:hover,
+.navbar .navbtn:focus-visible,
+.navbar .navbtn--active {
+  background: transparent;
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.navbar .navbtn:hover {
+  transform: translateY(-1px);
+}
+
+.navbar .navbtn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.navbar .navbtn:focus-visible {
+  outline: 2px solid rgba(247, 165, 59, 0.82);
+  outline-offset: 3px;
+}
+
+.navbtn__active-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1px solid rgba(247, 165, 59, 0.5);
+  border-radius: inherit;
+  background:
+    linear-gradient(135deg, rgba(247, 165, 59, 0.24), rgba(255, 255, 255, 0.08)),
+    rgba(255, 255, 255, 0.04);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.22),
+    0 0 22px rgba(247, 165, 59, 0.16);
+}
+
+.navbtn__label {
+  position: relative;
+  z-index: 1;
+  display: block;
 }
 
 /* ---------- Hero Section (full screen, no card) ---------- */
@@ -394,9 +467,17 @@ body {
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .cursor__ring,
   .cursor__dot,
-  .cursor__ripple {
+  .cursor__ripple,
+  .navbar__links,
+  .navbar .navbtn,
+  .navbtn__active-bg,
+  .navbtn__label {
     transition: none !important;
     animation: none !important;
   }
@@ -424,7 +505,7 @@ body {
   }
 
   .navbar__links {
-    gap: 8px;
+    gap: 3px;
   }
 
   .navbtn {
@@ -520,8 +601,22 @@ body {
   .navbar__links {
     display: flex;
     justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
+    max-width: calc(100vw - 20px);
+    gap: 3px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .navbar__links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navbar .navbtn {
+    min-height: 34px;
+    padding: 6px 10px;
+    font-size: 13px;
   }
 
   /* Hero on mobile: top-ish and centred */
@@ -555,6 +650,11 @@ body {
   .navbtn {
     font-size: 13px;
     padding: 6px 10px;
+  }
+
+  .navbar .navbtn {
+    padding-inline: 8px;
+    font-size: 12px;
   }
 
   .sidebar__k {
