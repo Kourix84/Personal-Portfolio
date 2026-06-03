@@ -1,5 +1,9 @@
 import React, { useRef, useState } from "react";
 import aboutImage from "../assets/img.jpg";
+import aboutImageTwo from "../assets/img2.jpeg";
+import horseImage from "../assets/horse.jpeg";
+import skiImage from "../assets/ski.jpeg";
+import eventImage from "../assets/event.jpeg";
 
 const tabs = [
   { id: "story", label: "About me" },
@@ -49,21 +53,21 @@ const timelineItems = [
 const hobbyItems = [
   {
     title: "Horse riding",
-    image: aboutImage,
+    image: horseImage,
     description:
       "Show jumping and training have taught me focus, patience, and quick decision-making under pressure.",
   },
   {
-    title: "Swimming",
-    image: aboutImage,
-    description:
-      "Swimming keeps me consistent and disciplined, especially when balancing study, projects, and responsibilities.",
-  },
-  {
     title: "Skiing",
-    image: aboutImage,
+    image: skiImage,
     description:
       "Skiing is one of the ways I reset, stay active, and challenge myself outside of design and development.",
+  },
+  {
+    title: "Event Organization",
+    image: eventImage,
+    description:
+      "Organizing events and meetups for the Fontys ICT community has been a rewarding way to connect, share knowledge, and build a stronger network.",
   },
 ];
 
@@ -137,7 +141,7 @@ export default function AboutSection() {
               role="tabpanel"
             >
               <div className="about-portrait">
-                <img src={aboutImage} alt="Kourosh portrait placeholder" />
+                <img src={aboutImageTwo} alt="Kourosh portrait placeholder" />
               </div>
 
               <div className="about-copy">

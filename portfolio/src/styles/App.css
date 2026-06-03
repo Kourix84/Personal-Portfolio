@@ -188,16 +188,6 @@
   box-shadow: var(--shadow);
 }
 
-.about-portrait::after {
-  content: "";
-  position: absolute;
-  top: -24px;
-  right: 12%;
-  bottom: -24px;
-  width: 1px;
-  background: rgba(255, 255, 255, 0.42);
-}
-
 .about-portrait img {
   width: 100%;
   height: 100%;

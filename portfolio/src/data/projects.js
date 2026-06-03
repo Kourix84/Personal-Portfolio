@@ -8,9 +8,9 @@ const projects = [
     role: "Product design, front-end development",
     tech: ["React", "IndexedDB" , "Figma"],
     period: "Feb 2025 – Jun 2025",
-    heroImage: "/src/assets/img.jpg", // replace with real image
+    heroImage: "/src/assets/piopera.jpg", // replace with real image
     summary:
-      "Piopera is a progressive web app that extends a physical mystery board game with interactive questions, side quests and a digital rulebook.",
+      "Piopera is a progressive web app that extends a physical mystery board game witah interactive questions, side quests and a digital rulebook.",
     highlights: [
       "Designed some parts of the UI/UX for mobile and desktop players.",
       "Implemented offline-first behaviour using IndexedDB.",
@@ -32,7 +32,7 @@ const projects = [
     role: "Web design, front-end development",
     tech: ["Figma", "HTML", "CSS", "JavaScript"],
     period: "Sep 2024 - Jan 2025",
-    heroImage: "/src/assets/img.jpg",
+    heroImage: "/src/assets/nasmak.png",
     summary:
       "Website for Nasmak PM, A band based in Eindhoven and Neunen and having a strong local presence and having a tour around Netherlands every year.",
     highlights: [
@@ -54,7 +54,7 @@ const projects = [
     role: "Mobile concept, UX, prototype, Swift Development",
     tech: ["Swift","SwiftUI", "Figma", "OPENAI"],
     period: "Sep 2025 - Oct 2025",
-    heroImage: "/src/assets/img.jpg",
+    heroImage: "/src/assets/not-a-cook-book.png",
     summary:
       "Not a Cook Book is a concept mobile app that helps users discover recipes based on the ingredients of their food by taking a picture and the AI analyzes the food, as well as providing AI-assisted suggestions meals and step-by-step cooking guidance.",
     highlights: [
