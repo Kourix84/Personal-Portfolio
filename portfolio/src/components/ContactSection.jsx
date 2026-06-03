@@ -1,55 +1,40 @@
 import React from "react";
+import cvIcon from "../assets/icons/cv.svg?raw";
+import emailIcon from "../assets/icons/email.svg?raw";
+import externalLinkIcon from "../assets/icons/external-link.svg?raw";
+import githubIcon from "../assets/icons/github.svg?raw";
+import instagramIcon from "../assets/icons/instagram.svg?raw";
+import linkedinIcon from "../assets/icons/linkedin.svg?raw";
 
 const personalEmail = "hello@kourix.dev";
 const studentEmail = "k.esmaeiltajer@student.fontys.nl";
 
-const ExternalArrowIcon = () => (
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M7 17L17 7" />
-    <path d="M10 7h7v7" />
-    <path d="M17 17H7V7" />
-  </svg>
-);
+const normalizeIcon = (svg) =>
+  svg
+    .replace(/<!DOCTYPE[^>]*>/i, "")
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replaceAll("#ffffff", "currentColor")
+    .replaceAll("#FFFFFF", "currentColor")
+    .replaceAll("#fff", "currentColor")
+    .replaceAll("#FFF", "currentColor")
+    .replace(/\swidth="[^"]*"/, "")
+    .replace(/\sheight="[^"]*"/, "");
 
-const EmailIcon = () => (
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M4 6h16v12H4z" />
-    <path d="m4 7 8 6 8-6" />
-  </svg>
-);
+const icons = {
+  cv: normalizeIcon(cvIcon),
+  email: normalizeIcon(emailIcon),
+  "external-link": normalizeIcon(externalLinkIcon),
+  github: normalizeIcon(githubIcon),
+  instagram: normalizeIcon(instagramIcon),
+  linkedin: normalizeIcon(linkedinIcon),
+};
 
-const LinkedInIcon = () => (
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M6.8 10v8" />
-    <path d="M11.2 18v-8" />
-    <path d="M11.2 13.4c0-2 1.2-3.4 3.2-3.4s3.1 1.4 3.1 3.8V18" />
-    <path d="M6.8 7.2v.1" />
-    <path d="M4 4h16v16H4z" />
-  </svg>
-);
-
-const GitHubIcon = () => (
-  <svg className="contact-icon--filled" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M12 2.8a9.2 9.2 0 0 0-2.9 17.9c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 0 1.6 1.1 1.6 1.1.9 1.6 2.5 1.1 3.1.9.1-.7.4-1.1.7-1.4-2.3-.3-4.7-1.1-4.7-5a3.9 3.9 0 0 1 1-2.7 3.7 3.7 0 0 1 .1-2.7s.9-.3 2.8 1a9.5 9.5 0 0 1 5.1 0c1.9-1.3 2.8-1 2.8-1a3.7 3.7 0 0 1 .1 2.7 3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.7 5 .4.3.7 1 .7 2v2.4c0 .3.2.6.7.5A9.2 9.2 0 0 0 12 2.8z" />
-  </svg>
-);
-
-const InstagramIcon = () => (
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M8 4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z" />
-    <path d="M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0z" />
-    <path d="M17.5 6.8v.1" />
-  </svg>
-);
-
-const CvIcon = () => (
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M7 3h7l4 4v14H7z" />
-    <path d="M14 3v5h4" />
-    <path d="M9.5 12h5" />
-    <path d="M9.5 15h5" />
-    <path d="M9.5 18h3" />
-  </svg>
+const SvgIcon = ({ name, className }) => (
+  <span
+    className={className}
+    aria-hidden="true"
+    dangerouslySetInnerHTML={{ __html: icons[name] }}
+  />
 );
 
 const contactLinks = [
@@ -57,40 +42,40 @@ const contactLinks = [
     title: "Personal Email",
     description: personalEmail,
     href: `mailto:${personalEmail}`,
-    icon: <EmailIcon />,
+    icon: "email",
   },
   {
     title: "Student Email",
     description: studentEmail,
     href: `mailto:${studentEmail}`,
-    icon: <EmailIcon />,
+    icon: "email",
   },
   {
     title: "LinkedIn",
-    description: "Connect with me.",
+    description: "Let's connect on LinkedIn.",
     href: "https://www.linkedin.com/in/kourosh-esmaeil-tajer/",
-    icon: <LinkedInIcon />,
+    icon: "linkedin",
     external: true,
   },
   {
     title: "GitHub",
-    description: "Check my Github page.",
+    description: "Check out my code and projects.",
     href: "https://github.com/Kourix84",
-    icon: <GitHubIcon />,
+    icon: "github",
     external: true,
   },
   {
     title: "Instagram",
-    description: "Follow me.",
+    description: "Follow my creative updates.",
     href: "https://www.instagram.com/kourosh__e.t/",
-    icon: <InstagramIcon />,
+    icon: "instagram",
     external: true,
   },
   {
     title: "CV",
-    description: "Check my CV.",
+    description: "Preview my CV PDF.",
     href: "/CV-Kourosh.pdf",
-    icon: <CvIcon />,
+    icon: "cv",
     external: true,
   },
 ];
@@ -102,14 +87,14 @@ export default function ContactSection() {
         <div className="contact__header">
           <p className="section__eyebrow">Contact</p>
           <h2 className="section__title contact__title">
-            Let&apos;s build something good
+            Let&apos;s build something good together!
           </h2>
-          <p className="section__subtitle contact__subtitle">
+          {/* <p className="section__subtitle contact__subtitle">
             I&apos;m open to full-stack internships, junior developer
             opportunities, and software work where I can contribute across
             frontend, backend, databases, and deployment while continuing to
             grow.
-          </p>
+          </p> */}
         </div>
 
         <div className="contact__board">
@@ -125,11 +110,17 @@ export default function ContactSection() {
             </p>
 
             <div className="contact__email-list" aria-label="Email addresses">
-              <a href={`mailto:${personalEmail}`}>
+              <a
+                href={`mailto:${personalEmail}`}
+                aria-label={`Email ${personalEmail}`}
+              >
                 <span>Personal</span>
                 <strong>{personalEmail}</strong>
               </a>
-              <a href={`mailto:${studentEmail}`}>
+              <a
+                href={`mailto:${studentEmail}`}
+                aria-label={`Email ${studentEmail}`}
+              >
                 <span>Student</span>
                 <strong>{studentEmail}</strong>
               </a>
@@ -144,9 +135,10 @@ export default function ContactSection() {
                 key={link.title}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noreferrer" : undefined}
+                aria-label={`${link.title}: ${link.description}`}
               >
                 <span className="contact-card__corner" aria-hidden="true" />
-                <span className="contact-card__icon">{link.icon}</span>
+                <SvgIcon name={link.icon} className="contact-card__icon" />
                 <span className="contact-card__content">
                   <span className="contact-card__title">{link.title}</span>
                   <span className="contact-card__description">
@@ -154,7 +146,10 @@ export default function ContactSection() {
                   </span>
                 </span>
                 <span className="contact-card__footer">
-                  <ExternalArrowIcon />
+                  <SvgIcon
+                    name="external-link"
+                    className="contact-card__arrow"
+                  />
                 </span>
               </a>
             ))}

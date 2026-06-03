@@ -70,7 +70,7 @@ const stackGroups = [
       "Deploying applications with practical infrastructure, containerization, and real delivery workflows.",
     tools: [
       { label: "Docker", icon: "docker" },
-      { label: "Raspberry Pi", icon: "raspberry" },
+      // { label: "Raspberry Pi", icon: "raspberry" },
       { label: "Cloudflare", icon: "cloudflare" },
       { label: "Vercel", icon: "vercel" },
     ],
