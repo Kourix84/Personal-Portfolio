@@ -85,8 +85,8 @@ export default function ProjectsSection() {
                   <h3 className="project-card__title">{project.title}</h3>
                   <p className="project-card__role">{project.role}</p>
                 </div>
-                <p className="project-card__short">{project.short}</p>
                 <p className="project-card__period">{project.period}</p>
+                <p className="project-card__short">{project.short}</p>
                 <div className="project-card__details">
                   <div>
                     <h4 className="project-card__subheading">Overview</h4>

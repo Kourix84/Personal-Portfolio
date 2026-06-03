@@ -41,7 +41,8 @@
 /* ---------- Generic sections (Projects / About / Contact) ---------- */
 .section {
   position: relative;
-  padding: clamp(56px, 12vh, 80px) clamp(16px, 7vw, 96px);
+  scroll-margin-top: calc(var(--navbar-h) + 6px);
+  padding: clamp(30px, 6vh, 46px) clamp(16px, 7vw, 96px);
   color: #ffffff; /* dark text for readability on light bg */
 }
 
@@ -95,8 +96,389 @@
   border-bottom-color: var(--accent);
 }
 
+/* ---------- About section ---------- */
+.section--about {
+  padding-top: clamp(30px, 6vh, 46px);
+}
+
+.about-section__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.about-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid var(--glass-stroke);
+  border-radius: 999px;
+  background: var(--glass);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.24);
+}
+
+.about-tabs__button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.about-tabs__button:hover {
+  transform: translateY(-1px);
+  color: #ffffff;
+}
+
+.about-tabs__button[aria-selected="true"] {
+  border-color: rgba(247, 165, 59, 0.55);
+  background: rgba(247, 165, 59, 0.16);
+  color: #ffffff;
+}
+
+.about-tabs__button:focus-visible,
+.experience-stage__arrow:focus-visible,
+.experience-timeline__button:focus-visible,
+.hobby-card:focus-visible {
+  outline: 2px solid rgba(247, 165, 59, 0.86);
+  outline-offset: 3px;
+}
+
+.about-panels {
+  margin-top: clamp(18px, 3vh, 28px);
+}
+
+.about-panel {
+  animation: aboutPanelIn 240ms ease both;
+}
+
+.about-panel--story {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(28px, 6vw, 72px);
+  align-items: center;
+}
+
+.about-portrait {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  min-height: 420px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.22);
+  box-shadow: var(--shadow);
+}
+
+.about-portrait::after {
+  content: "";
+  position: absolute;
+  top: -24px;
+  right: 12%;
+  bottom: -24px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.about-portrait img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 64% 48%;
+}
+
+.about-copy {
+  max-width: 690px;
+}
+
+.about-copy__marker {
+  display: inline-flex;
+  margin-bottom: 14px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.about-copy h3,
+.hobby-intro h3 {
+  margin: 0 0 18px 0;
+  max-width: 720px;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.about-panel--experience {
+  display: grid;
+  gap: clamp(5px, 1vh, 70px);
+}
+
+.experience-stage {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 56px;
+  align-items: center;
+  gap: 18px;
+  min-height: 360px;
+}
+
+.experience-stage__content {
+  text-align: center;
+}
+
+.experience-stage__kicker {
+  margin: 0 0 10px 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.experience-stage h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 98px;
+  font-weight: 900;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.experience-stage h4 {
+  margin: 22px 0 12px 0;
+  color: var(--accent);
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.experience-stage p:last-child {
+  max-width: 720px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.experience-stage__arrow {
+  width: 56px;
+  height: 56px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--accent);
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.experience-stage__arrow:hover {
+  transform: translateY(-1px);
+  border-color: rgba(247, 165, 59, 0.54);
+  background: rgba(247, 165, 59, 0.12);
+}
+
+.experience-stage__arrow svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.experience-timeline {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(var(--timeline-count), minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+}
+
+.experience-timeline__item {
+  position: relative;
+  min-width: 0;
+}
+
+.experience-timeline__item:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: -50%;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.experience-timeline__item--filled:not(:first-child)::before {
+  background: var(--accent);
+}
+
+.experience-timeline__button {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font: inherit;
+}
+
+.experience-timeline__dot {
+  width: 23px;
+  height: 23px;
+  display: block;
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  background: var(--bg);
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.experience-timeline__button:hover .experience-timeline__dot,
+.experience-timeline__button[aria-pressed="true"] .experience-timeline__dot {
+  transform: scale(1.1);
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 0 7px rgba(247, 165, 59, 0.13);
+}
+
+.experience-timeline__label {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.experience-timeline__button[aria-pressed="true"] .experience-timeline__label {
+  color: #ffffff;
+}
+
+.about-panel--hobbies {
+  display: grid;
+  gap: 28px;
+}
+
+.hobby-intro {
+  max-width: 720px;
+}
+
+.hobby-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.hobby-card {
+  position: relative;
+  min-height: 380px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.26);
+  box-shadow: var(--shadow);
+}
+
+.hobby-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition:
+    filter 0.22s ease,
+    transform 0.22s ease;
+}
+
+.hobby-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 24px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.12));
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.hobby-card:hover img,
+.hobby-card:focus img,
+.hobby-card:focus-visible img {
+  filter: blur(5px);
+  transform: scale(1.04);
+}
+
+.hobby-card:hover .hobby-card__overlay,
+.hobby-card:focus .hobby-card__overlay,
+.hobby-card:focus-visible .hobby-card__overlay {
+  opacity: 1;
+}
+
+.hobby-card__overlay h4 {
+  margin: 0 0 10px 0;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.hobby-card__overlay p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 16px;
+  line-height: 1.58;
+}
+
+@keyframes aboutPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* extra space on last section so it doesn't touch bottom bar */
 .section--contact {
+  padding-top: clamp(30px, 6vh, 46px);
   padding-bottom: clamp(72px, 18vh, 120px);
 }
 
@@ -105,7 +487,7 @@
 }
 
 .contact__header {
-  margin-bottom: clamp(30px, 6vw, 56px);
+  margin-bottom: clamp(20px, 3vw, 34px);
 }
 
 .contact__title {
@@ -374,7 +756,7 @@
 
 /* ---------- Project grid on home page ---------- */
 .section--projects {
-  padding-top: clamp(48px, 10vh, 72px);
+  padding-top: clamp(30px, 6vh, 46px);
 }
 
 .projects-grid {
@@ -586,7 +968,7 @@
 
 /* ---------- Tech stack section ---------- */
 .section--stacks {
-  padding-top: clamp(48px, 10vh, 72px);
+  padding-top: clamp(30px, 6vh, 46px);
 }
 
 .tech-stack-grid {
@@ -711,6 +1093,20 @@
 
 /* ---------- Responsive tweaks ---------- */
 @media (max-width: 1120px) {
+  .about-section__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .about-panel--story {
+    grid-template-columns: minmax(240px, 0.86fr) minmax(0, 1.14fr);
+    gap: 34px;
+  }
+
+  .experience-stage h3 {
+    font-size: 88px;
+  }
+
   .contact__board {
     grid-template-columns: 1fr;
   }
@@ -731,11 +1127,106 @@
   }
 
   .section {
-    padding: clamp(40px, 10vh, 64px) 16px;
+    padding: clamp(28px, 6vh, 42px) 16px;
   }
 
   .section--detail {
     margin: 24px 16px clamp(72px, 18vh, 120px);
+  }
+
+  .about-tabs {
+    width: min(100%, 430px);
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-radius: 18px;
+  }
+
+  .about-tabs__button {
+    min-width: 0;
+    padding-inline: 10px;
+    border-radius: 14px;
+    font-size: 12px;
+    white-space: normal;
+  }
+
+  .about-panel--story {
+    grid-template-columns: 1fr;
+  }
+
+  .about-portrait {
+    min-height: 0;
+    max-height: 520px;
+  }
+
+  .about-copy h3,
+  .hobby-intro h3 {
+    font-size: 30px;
+  }
+
+  .experience-stage {
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    gap: 10px;
+    min-height: 320px;
+  }
+
+  .experience-stage__arrow {
+    width: 44px;
+    height: 44px;
+  }
+
+  .experience-stage h3 {
+    font-size: 48px;
+    line-height: 0.98;
+  }
+
+  .experience-stage h4 {
+    margin-top: 18px;
+    font-size: 18px;
+  }
+
+  .experience-stage p:last-child {
+    font-size: 16px;
+  }
+
+  .experience-timeline {
+    grid-template-columns: repeat(var(--timeline-count), minmax(0, 1fr));
+    overflow-x: visible;
+    padding: 0;
+  }
+
+  .experience-timeline__button {
+    gap: 12px;
+  }
+
+  .experience-timeline__label {
+    font-size: 11px;
+  }
+
+  .hobby-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hobby-card {
+    min-height: 360px;
+  }
+
+  .hobby-card img {
+    filter: none;
+    transform: none;
+  }
+
+  .hobby-card__overlay {
+    top: auto;
+    min-height: 42%;
+    opacity: 1;
+  }
+
+  .hobby-card:hover img,
+  .hobby-card:focus img,
+  .hobby-card:focus-visible img {
+    filter: none;
+    transform: none;
   }
 
   .tech-stack-grid {
@@ -820,6 +1311,59 @@
 }
 
 @media (max-width: 520px) {
+  .about-tabs {
+    width: min(100%, 380px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-radius: 16px;
+  }
+
+  .about-tabs__button {
+    min-height: 38px;
+    padding-inline: 6px;
+    font-size: 10px;
+  }
+
+  .experience-stage {
+    grid-template-columns: 38px minmax(0, 1fr) 38px;
+    gap: 8px;
+    min-height: 270px;
+  }
+
+  .experience-stage__arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .experience-stage h3 {
+    font-size: clamp(34px, 10vw, 42px);
+  }
+
+  .experience-stage h4 {
+    font-size: 16px;
+  }
+
+  .experience-timeline__item:not(:first-child)::before {
+    top: 9px;
+  }
+
+  .experience-timeline__dot {
+    width: 19px;
+    height: 19px;
+  }
+
+  .experience-timeline__button {
+    gap: 10px;
+  }
+
+  .experience-timeline__label {
+    font-size: 9px;
+    line-height: 1.15;
+  }
+
+  .hobby-card {
+    min-height: 320px;
+  }
+
   .project-card__details {
     grid-template-columns: 1fr;
     gap: 16px;

@@ -87,14 +87,14 @@ export default function ContactSection() {
         <div className="contact__header">
           <p className="section__eyebrow">Contact</p>
           <h2 className="section__title contact__title">
-            Let&apos;s build something good
+            Let&apos;s build something good together!
           </h2>
-          <p className="section__subtitle contact__subtitle">
+          {/* <p className="section__subtitle contact__subtitle">
             I&apos;m open to full-stack internships, junior developer
             opportunities, and software work where I can contribute across
             frontend, backend, databases, and deployment while continuing to
             grow.
-          </p>
+          </p> */}
         </div>
 
         <div className="contact__board">
