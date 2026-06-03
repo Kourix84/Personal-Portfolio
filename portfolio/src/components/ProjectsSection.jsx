@@ -95,7 +95,7 @@ export default function ProjectsSection() {
             return (
               <article key={project.id} className="project-card">
                 <div className="project-card__media">
-                  <img src={projectImage} alt="" aria-hidden="true" />
+                  <img src={project.heroImage} alt="" aria-hidden="true" />
                 </div>
                 <div className="project-card__header">
                   <span className="project-card__index">
