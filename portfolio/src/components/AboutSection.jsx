@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import aboutImage from "../assets/img.jpg";
 import aboutImageTwo from "../assets/img2.jpeg";
 import horseImage from "../assets/horse.jpeg";
 import skiImage from "../assets/ski.jpeg";
