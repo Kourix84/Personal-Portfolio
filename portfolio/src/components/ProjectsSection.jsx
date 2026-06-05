@@ -1,7 +1,7 @@
 import React from "react";
-import notACookBookImage from "../assets/not-a-cook-book.png";
+import notACookBookImage from "../assets/not-a-cook-book.jpg";
 import pioperaImage from "../assets/piopera.jpg";
-import nasmakImage from "../assets/nasmak.png";
+import nasmakImage from "../assets/nasmak.jpg";
 
 const iconModules = import.meta.glob("../assets/icons/*.svg", {
   eager: true,
@@ -155,7 +155,7 @@ const AnimatedLinkLabel = ({ label }) => (
   </>
 );
 
-export default function ProjectsSection() {
+function ProjectsSection() {
   return (
     <section id="projects" className="section section--projects">
       <div className="section__inner section__inner--wide">
@@ -235,3 +235,7 @@ export default function ProjectsSection() {
     </section>
   );
 }
+
+ProjectsSection.projectCount = projects.length;
+
+export default ProjectsSection;
