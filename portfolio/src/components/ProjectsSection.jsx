@@ -155,7 +155,7 @@ const AnimatedLinkLabel = ({ label }) => (
   </>
 );
 
-export default function ProjectsSection() {
+function ProjectsSection() {
   return (
     <section id="projects" className="section section--projects">
       <div className="section__inner section__inner--wide">
@@ -235,3 +235,7 @@ export default function ProjectsSection() {
     </section>
   );
 }
+
+ProjectsSection.projectCount = projects.length;
+
+export default ProjectsSection;
