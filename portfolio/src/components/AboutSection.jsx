@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
-import aboutImageTwo from "../assets/img2.jpeg";
-import horseImage from "../assets/horse.jpeg";
-import skiImage from "../assets/ski.jpeg";
-import eventImage from "../assets/event.jpeg";
+import aboutImageTwo from "../assets/img2.jpg";
+import horseImage from "../assets/horse.jpg";
+import skiImage from "../assets/ski.jpg";
+import eventImage from "../assets/event.jpg";
 
 const tabs = [
   { id: "story", label: "About me" },
