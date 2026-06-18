@@ -33,13 +33,15 @@ const stackGroups = [
     description:
       "Responsive, component-based interfaces focused on clarity, usability, and maintainable structure.",
     tools: [
-      { label: "HTML", icon: "html" },
-      { label: "CSS", icon: "css" },
+      // { label: "HTML", icon: "html" },
+      // { label: "CSS", icon: "css" },
       { label: "JavaScript", icon: "javascript" },
       { label: "TypeScript", icon: "typescript" },
       { label: "React", icon: "react" },
       { label: "Angular", icon: "angular" },
       { label: "Next.js", icon: "next" },
+      { label: "Tailwind CSS", icon: "tailwind" },
+      { label: "Jinja", icon: "jinja" },
     ],
   },
   {
@@ -89,7 +91,7 @@ const stackGroups = [
     description:
       "Integrating external services for authentication, payments, AI functionality, and backend services.",
     tools: [
-      { label: "Auth0", icon: "auth0" },
+      { label: "OAuth", icon: "oauth" },
       { label: "Stripe", icon: "stripe" },
       { label: "OpenAI", icon: "openai" },
     ],
