@@ -2,6 +2,7 @@ import React from "react";
 import notACookBookImage from "../assets/not-a-cook-book.jpg";
 import pioperaImage from "../assets/piopera.jpg";
 import nasmakImage from "../assets/nasmak.jpg";
+import asmlImage from "../assets/asml.jpg";
 
 const iconModules = import.meta.glob("../assets/icons/*.svg", {
   eager: true,
@@ -26,6 +27,12 @@ const techIconByLabel = {
   swift: "swift",
   react: "react",
   swiftui: "swiftui",
+  python: "python",
+  flask: "flask",
+  postgresql: "postgresql",
+  oauth: "oauth",
+  jinja: "jinja",
+  sqlite: "sqlite",
 };
 
 const linkLabels = {
@@ -37,6 +44,59 @@ const linkLabels = {
 const visibleHighlights = 3;
 
 const projects = [
+  {
+    id: "ASML",
+    title: "ASML Package Index – Internship Project",
+    short:
+      "Developed an internal Python package management platform with search, uploads, validation, and approval workflows.",
+    role: "UI/UX design, Fullstack development",
+    tech: ["Python", "Flask", "Jinja", "JavaScript", "SQLite", "OAuth", "Figma",],
+    period: "Feb 2026 – July 2026",
+    heroImage: asmlImage,
+    summary:
+      "During my internship at ASML, I developed an internal Python package index using Flask, Jinja, and SQLAlchemy. The platform helps employees upload, manage, search, and review Python packages through a structured and user-friendly workflow. I worked on the frontend, backend, database integration, authentication, validation, UX improvements, testing, and code optimisation.",
+    highlights: [
+      "Developed an internal Python package index for ASML employees.",
+      "Improved the user experience through wireframes, stakeholder feedback, and user testing",
+      "Built the application using Python, Flask, Jinja, JavaScript, and SQLAlchemy",
+      "Added search, filtering, validation, metadata extraction, and package status management.",
+      "Implemented authentication, security checks, and protected routes.",
+      "Worked on frontend development, backend logic, database integration, testing, and code optimisation."
+    ],
+    links: {
+      github: "",
+      live: "",
+      Figma:
+        "",
+    },
+  },
+  {
+    id: "not-a-cook-book",
+    title: "Not a Cook Book – Mobile App Concept",
+    short:
+      "Concept app and design prototype for discovering recipes based on ingredients with AI assistance.",
+    role: "Mobile concept, UX, prototype, Swift Development",
+    tech: ["Swift", "SwiftUI", "Figma", "OPENAI"],
+    period: "Sep 2025 - Oct 2025",
+    heroImage: notACookBookImage,
+    summary:
+      "Not a Cook Book is a concept mobile app that helps users discover recipes based on the ingredients they already have by taking a picture and letting AI analyze the food. It also provides personalized meal suggestions, step-by-step cooking guidance, and a more intuitive way to turn everyday ingredients into creative recipes.",
+    highlights: [
+      "Defined personas and mapped key user journeys.",
+      "Prototyped core flows in SwiftUI.",
+      "Explored AI-assisted suggestions based on play history.",
+      "Created Figma designs for user testing and feedback.",
+      "OPENAI API integration for image recognition and recipe generation.",
+      "Implemented a clean and intuitive UI for easy navigation.",
+    ],
+    links: {
+      github: "https://github.com/Kourix84/not-a-cook-book.git",
+      live: "",
+      Figma:
+        "https://www.figma.com/design/Vlumgo2fqvjscuRtyxD0ce/Not-a-cookbook?node-id=0-1&t=2LpVtQlvFjtu6S3h-1",
+    },
+  },
+
   {
     id: "piopera",
     title: "Piopera – Digital Board Game",
@@ -62,6 +122,7 @@ const projects = [
         "https://www.figma.com/design/VsheeKflt0E9815ucCBzWR/Board-Game-App?node-id=0-1&t=A0zKGFKHqYJcaH8l-1",
     },
   },
+
   {
     id: "nasmak-website",
     title: "Nasmak – Website",
@@ -83,32 +144,6 @@ const projects = [
       live: "https://i539945.hera.fontysict.net/Nasmak-PM/",
       Figma:
         "https://www.figma.com/design/QHYNmWlb9jcXmcAeVGvFUM/Nasmak-PM?node-id=0-1&t=xKLVXe95gMZBTKsu-1",
-    },
-  },
-  {
-    id: "not-a-cook-book",
-    title: "Not a Cook Book – Mobile App Concept",
-    short:
-      "Concept app and design prototype for discovering recipes based on ingredients with AI assistance.",
-    role: "Mobile concept, UX, prototype, Swift Development",
-    tech: ["Swift", "SwiftUI", "Figma", "OPENAI"],
-    period: "Sep 2025 - Oct 2025",
-    heroImage: notACookBookImage,
-    summary:
-      "Not a Cook Book is a concept mobile app that helps users discover recipes based on the ingredients of their food by taking a picture and the AI analyzes the food, as well as providing AI-assisted suggestions meals and step-by-step cooking guidance.",
-    highlights: [
-      "Defined personas and mapped key user journeys.",
-      "Prototyped core flows in SwiftUI with mocked data.",
-      "Explored AI-assisted suggestions based on play history.",
-      "Created Figma designs for user testing and feedback.",
-      "OPENAI API integration for image recognition and recipe generation.",
-      "Implemented a clean and intuitive UI for easy navigation.",
-    ],
-    links: {
-      github: "https://github.com/Kourix84/not-a-cook-book.git",
-      live: "",
-      Figma:
-        "https://www.figma.com/design/Vlumgo2fqvjscuRtyxD0ce/Not-a-cookbook?node-id=0-1&t=2LpVtQlvFjtu6S3h-1",
     },
   },
 ];
@@ -192,11 +227,9 @@ function ProjectsSection() {
                   <div className="project-card__highlights">
                     <h4 className="project-card__subheading">Highlights</h4>
                     <ul>
-                      {project.highlights
-                        .slice(0, visibleHighlights)
-                        .map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
+                      {project.highlights.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
                     </ul>
                   </div>
                 </div>
