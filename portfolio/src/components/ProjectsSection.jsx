@@ -2,7 +2,7 @@ import React from "react";
 import notACookBookImage from "../assets/not-a-cook-book.jpg";
 import pioperaImage from "../assets/piopera.jpg";
 import nasmakImage from "../assets/nasmak.jpg";
-import asmlImage from "../assets/asml.jpg";
+import asmlImage from "../assets/ASML.jpg";
 
 const iconModules = import.meta.glob("../assets/icons/*.svg", {
   eager: true,
