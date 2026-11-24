@@ -22,7 +22,7 @@ export default function ContactSection() {
         Let's build something good together.
       </h2>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-6 rounded-[22px] border border-white/[.18] bg-[rgba(18,22,21,.35)] p-6 backdrop-blur-[8px]">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-6 rounded-[22px] border border-white/[.18] bg-[rgba(18,22,21,.35)] p-6 backdrop-blur-[8px] max-md:p-4">
         <div className="flex flex-col gap-[22px] p-2">
           <span className="inline-flex w-fit items-center gap-2.5 rounded-full border border-white/[.24] bg-black/[.28] px-3.5 py-2.5 text-[13px] font-extrabold tracking-[.14em] uppercase">
             <span className="size-[9px] rounded-full bg-accent shadow-[0_0_18px_rgba(247,165,59,.72)]" />
@@ -53,7 +53,7 @@ export default function ContactSection() {
           </div>
         </div>
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,180px),1fr))] gap-3.5">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,180px),1fr))] gap-3.5 max-md:grid-cols-2 max-md:gap-2.5">
           {contacts.map((c) => (
             <a
               key={c.title}
@@ -61,12 +61,12 @@ export default function ContactSection() {
               target="_blank"
               rel="noreferrer"
               aria-label={c.title}
-              className="relative flex min-h-[190px] flex-col rounded-[18px] border border-white/[.24] bg-white/[.055] p-[22px] text-white transition-[transform,border-color] duration-[180ms] hover:-translate-y-1 hover:border-accent/70 hover:bg-white/[.09]"
+              className="relative flex min-h-[190px] flex-col rounded-[18px] border border-white/[.24] bg-white/[.055] p-[22px] max-md:min-h-[140px] max-md:p-4 text-white transition-[transform,border-color] duration-[180ms] hover:-translate-y-1 hover:border-accent/70 hover:bg-white/[.09]"
             >
-              <img src={icon(c.icon)} alt="" width="40" height="40" loading="lazy" className="mb-auto size-10" />
-              <span className="mt-7 text-[17px] font-black tracking-[.08em] uppercase">{c.title}</span>
-              <span className="mt-2 text-[15px] leading-normal text-white/80">{c.description}</span>
-              <img src={icon("external-link")} alt="" width="20" height="20" loading="lazy" className="absolute top-5 right-5 size-5 opacity-80" />
+              <img src={icon(c.icon)} alt="" width="40" height="40" loading="lazy" className="mb-auto size-10 max-md:size-8" />
+              <span className="mt-7 text-[17px] font-black tracking-[.08em] uppercase max-md:mt-5 max-md:text-[14px]">{c.title}</span>
+              <span className="mt-2 text-[15px] leading-normal text-white/80 max-md:mt-1 max-md:text-[13px]">{c.description}</span>
+              <img src={icon("external-link")} alt="" width="20" height="20" loading="lazy" className="absolute top-5 right-5 size-5 opacity-80 max-md:top-4 max-md:right-4 max-md:size-4" />
             </a>
           ))}
         </div>

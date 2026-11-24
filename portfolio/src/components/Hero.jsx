@@ -5,7 +5,7 @@ export default function Hero() {
     <section
       id="hero"
       aria-labelledby="hero-title"
-      className="flex min-h-svh flex-col justify-between gap-12 px-[clamp(20px,5%,76px)] pt-[120px] pb-[clamp(32px,5vh,56px)]"
+      className="flex min-h-svh flex-col justify-between gap-12 px-[clamp(20px,5%,76px)] pt-[120px] pb-[clamp(32px,5vh,56px)] max-md:min-h-[calc(100svh-4rem)] max-md:gap-8 max-md:pt-[88px]"
     >
       <p className="m-0 flex items-center gap-3.5 text-[clamp(15px,1.3vw,18px)] text-white/[.88] [text-shadow:0_10px_28px_rgba(0,0,0,.5)]">
         <span className="h-px w-11 bg-accent" />
