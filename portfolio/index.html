@@ -3,21 +3,70 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="./src/assets/K.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Kourix – media design student focused on UI/UX and web development." />
-  <title>Kourosh Esmaeil Tajer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="/src/styles/loader.css" />
+  <title>Kourosh Esmaeil Tajer | Full-Stack Developer &amp; UI/UX Designer</title>
+  <meta name="description" content="Kourosh Esmaeil Tajer — Fontys ICT student, full-stack developer and UI/UX designer in Eindhoven. Internship at ASML, a SwiftUI app, an offline-first PWA and a live band website." />
+  <meta name="author" content="Kourosh Esmaeil Tajer" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://kourix.dev/" />
+  <meta name="theme-color" content="#3f504b" />
+  <link rel="icon" type="image/svg+xml" href="./src/assets/K.svg" />
+
+  <!-- Social previews (LinkedIn, WhatsApp, X, Slack…) -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:site_name" content="Kourosh Esmaeil Tajer" />
+  <meta property="og:title" content="Kourosh Esmaeil Tajer | Full-Stack Developer &amp; UI/UX Designer" />
+  <meta property="og:description" content="Design it. Build it. Ship it. Fontys ICT student turning ideas into products people enjoy using — from first sketch to working code." />
+  <meta property="og:url" content="https://kourix.dev/" />
+  <meta property="og:image" content="https://kourix.dev/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Kourosh Esmaeil Tajer sitting outdoors" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="profile:first_name" content="Kourosh" />
+  <meta property="profile:last_name" content="Esmaeil Tajer" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kourosh Esmaeil Tajer | Full-Stack Developer &amp; UI/UX Designer" />
+  <meta name="twitter:description" content="Design it. Build it. Ship it. Fontys ICT student turning ideas into products people enjoy using." />
+  <meta name="twitter:image" content="https://kourix.dev/og-image.jpg" />
+
+  <!-- Structured data: lets search engines show a person/profile result -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "url": "https://kourix.dev/",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Kourosh Esmaeil Tajer",
+      "url": "https://kourix.dev/",
+      "image": "https://kourix.dev/og-image.jpg",
+      "jobTitle": "Full-Stack Developer & UI/UX Designer",
+      "email": "mailto:hello@kourix.dev",
+      "address": { "@type": "PostalAddress", "addressLocality": "Eindhoven", "addressCountry": "NL" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fontys University of Applied Sciences" },
+      "knowsAbout": ["React", "Python", "Flask", "Swift", "SwiftUI", "UI/UX design", "Figma"],
+      "sameAs": [
+        "https://github.com/Kourix84",
+        "https://www.linkedin.com/in/kourosh-esmaeil-tajer/",
+        "https://www.instagram.com/kourosh__e.t/"
+      ]
+    }
+  }
+  </script>
+
+  <!-- Font: load without blocking first paint -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair:ital,wght@0,300..900;1,300..900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair:ital,wght@0,300..900;1,300..900&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair:ital,wght@0,300..900;1,300..900&display=swap" />
+  </noscript>
 </head>
 
 <body>
   <div id="root"></div>
-
-  <div id="preloader" aria-label="Loading">
-    <img src="/src/assets/K.svg" alt="K logo" class="loader-logo" />
-  </div>
-
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
