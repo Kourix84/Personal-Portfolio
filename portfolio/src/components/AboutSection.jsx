@@ -3,8 +3,8 @@ import Section, { Eyebrow, sectionTitleClass } from "./Section.jsx";
 import portrait from "../assets/portrait.webp";
 
 const EXPERIENCE = [
-  { period: "S6 · Sep – Feb", title: "Minor · Virtual Production", line: "Real-time 3D, LED-wall shoots and in-camera effects for film and media." },
-  { period: "Feb – Jul 2026", title: "Intern · ASML", line: "Designed and built an internal Python package platform end to end.", now: true },
+  { period: "S6 · Sep – Feb", title: "Minor · Virtual Production", line: "Real-time 3D, LED-wall shoots and in-camera effects for film and media." ,now: true},
+  { period: "Feb – Jul 2026", title: "Intern · ASML", line: "Designed and built an internal Python package platform end to end." },
   { period: "2024 – now", title: "Board member · PROXY", line: "Marketing and events for the Fontys ICT community." },
   { period: "Semester 4", title: "Mobile app development", line: "Swift, SwiftUI and UI/UX practice — Not a Cook Book." },
   { period: "Semester 3", title: "Front-end development", line: "Connected interfaces to APIs and real user flows." },
