@@ -1,161 +1,78 @@
 import React from "react";
-import cvIcon from "../assets/icons/cv.svg?raw";
-import emailIcon from "../assets/icons/email.svg?raw";
-import externalLinkIcon from "../assets/icons/external-link.svg?raw";
-import githubIcon from "../assets/icons/github.svg?raw";
-import instagramIcon from "../assets/icons/instagram.svg?raw";
-import linkedinIcon from "../assets/icons/linkedin.svg?raw";
+import Section from "./Section.jsx";
+import icon from "../data/icons.js";
+import { CV_URL, GITHUB_URL, INSTAGRAM_URL, LINKEDIN_URL, PERSONAL_EMAIL, STUDENT_EMAIL } from "../data/links.js";
 
-const personalEmail = "hello@kourix.dev";
-const studentEmail = "k.esmaeiltajer@student.fontys.nl";
-
-const normalizeIcon = (svg) =>
-  svg
-    .replace(/<!DOCTYPE[^>]*>/i, "")
-    .replace(/<!--[\s\S]*?-->/g, "")
-    .replaceAll("#ffffff", "currentColor")
-    .replaceAll("#FFFFFF", "currentColor")
-    .replaceAll("#fff", "currentColor")
-    .replaceAll("#FFF", "currentColor")
-    .replace(/\swidth="[^"]*"/, "")
-    .replace(/\sheight="[^"]*"/, "");
-
-const icons = {
-  cv: normalizeIcon(cvIcon),
-  email: normalizeIcon(emailIcon),
-  "external-link": normalizeIcon(externalLinkIcon),
-  github: normalizeIcon(githubIcon),
-  instagram: normalizeIcon(instagramIcon),
-  linkedin: normalizeIcon(linkedinIcon),
-};
-
-const SvgIcon = ({ name, className }) => (
-  <span
-    className={className}
-    aria-hidden="true"
-    dangerouslySetInnerHTML={{ __html: icons[name] }}
-  />
-);
-
-const contactLinks = [
-  {
-    title: "Personal Email",
-    description: personalEmail,
-    href: `mailto:${personalEmail}`,
-    icon: "email",
-  },
-  {
-    title: "Student Email",
-    description: studentEmail,
-    href: `mailto:${studentEmail}`,
-    icon: "email",
-  },
-  {
-    title: "LinkedIn",
-    description: "Let's connect on LinkedIn.",
-    href: "https://www.linkedin.com/in/kourosh-esmaeil-tajer/",
-    icon: "linkedin",
-    external: true,
-  },
-  {
-    title: "GitHub",
-    description: "Check out my code and projects.",
-    href: "https://github.com/Kourix84",
-    icon: "github",
-    external: true,
-  },
-  {
-    title: "Instagram",
-    description: "Follow my creative updates.",
-    href: "https://www.instagram.com/kourosh__e.t/",
-    icon: "instagram",
-    external: true,
-  },
-  {
-    title: "CV",
-    description: "Preview my CV PDF.",
-    href: "/CV-Kourosh.pdf",
-    icon: "cv",
-    external: true,
-  },
+const contacts = [
+  { title: "LinkedIn", description: "Let's connect.", href: LINKEDIN_URL, icon: "linkedin" },
+  { title: "GitHub", description: "Code and projects.", href: GITHUB_URL, icon: "github" },
+  { title: "CV", description: "Preview my CV (PDF).", href: CV_URL, icon: "cv" },
+  { title: "Instagram", description: "Life outside code.", href: INSTAGRAM_URL, icon: "instagram" },
 ];
+
+const labelClass = "text-xs font-extrabold tracking-[.14em] text-white/70 uppercase";
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="section section--contact">
-      <div className="section__inner section__inner--wide contact">
-        <div className="contact__header">
-          <p className="section__eyebrow">Contact</p>
-          <h2 className="section__title contact__title">
-            Let&apos;s build something good together!
-          </h2>
-          {/* <p className="section__subtitle contact__subtitle">
-            I&apos;m open to full-stack internships, junior developer
-            opportunities, and software work where I can contribute across
-            frontend, backend, databases, and deployment while continuing to
-            grow.
-          </p> */}
+    <Section id="contact" eyebrow="04 — Contact" className="pb-[clamp(72px,16vh,120px)]">
+      <h2
+        id="contact-title"
+        className="mt-0 mb-7 max-w-[16ch] text-[clamp(34px,4.4vw,60px)] leading-none font-semibold"
+      >
+        Let's build something good together.
+      </h2>
+
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-6 rounded-[22px] border border-white/[.18] bg-[rgba(18,22,21,.35)] p-6 backdrop-blur-[8px]">
+        <div className="flex flex-col gap-[22px] p-2">
+          <span className="inline-flex w-fit items-center gap-2.5 rounded-full border border-white/[.24] bg-black/[.28] px-3.5 py-2.5 text-[13px] font-extrabold tracking-[.14em] uppercase">
+            <span className="size-[9px] rounded-full bg-accent shadow-[0_0_18px_rgba(247,165,59,.72)]" />
+            Available for
+          </span>
+          <h3 className="m-0 text-[clamp(28px,3vw,40px)] leading-[1.08] font-black uppercase">
+            Internships &amp; junior roles
+          </h3>
+          <p className="m-0 border-t border-white/[.22] pt-[22px] text-lg leading-[1.7] text-white/[.88]">
+            Full-stack, front-end or UX engineering. Have a role or collaboration that fits? Reach out and let's
+            talk.
+          </p>
+          <div className="grid gap-2.5">
+            <a
+              href={`mailto:${PERSONAL_EMAIL}`}
+              className="grid gap-1.5 rounded-[14px] border border-accent/40 bg-accent/[.12] px-[18px] py-4 hover:border-accent/80 hover:bg-accent/20"
+            >
+              <span className={labelClass}>Personal email</span>
+              <strong className="text-[clamp(20px,2vw,26px)] font-bold">{PERSONAL_EMAIL}</strong>
+            </a>
+            <a
+              href={`mailto:${STUDENT_EMAIL}`}
+              className="grid gap-1.5 rounded-[14px] border border-white/[.22] bg-white/5 px-[18px] py-3.5 hover:border-accent/60 hover:bg-accent/[.12]"
+            >
+              <span className={labelClass}>Student email</span>
+              <strong className="text-[clamp(16px,1.5vw,19px)] font-bold wrap-anywhere">{STUDENT_EMAIL}</strong>
+            </a>
+          </div>
         </div>
 
-        <div className="contact__board">
-          <div className="contact__intro">
-            <span className="contact__status">
-              <span aria-hidden="true" />
-              Available for
-            </span>
-            <h3>Internships / Junior Roles</h3>
-            <p>
-              Have an opportunity, collaboration, or role that fits? Reach out
-              and let&apos;s talk.
-            </p>
-
-            <div className="contact__email-list" aria-label="Email addresses">
-              <a
-                href={`mailto:${personalEmail}`}
-                aria-label={`Email ${personalEmail}`}
-              >
-                <span>Personal</span>
-                <strong>{personalEmail}</strong>
-              </a>
-              <a
-                href={`mailto:${studentEmail}`}
-                aria-label={`Email ${studentEmail}`}
-              >
-                <span>Student</span>
-                <strong>{studentEmail}</strong>
-              </a>
-            </div>
-          </div>
-
-          <div className="contact__cards" aria-label="Contact links">
-            {contactLinks.map((link) => (
-              <a
-                className="contact-card"
-                href={link.href}
-                key={link.title}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noreferrer" : undefined}
-                aria-label={`${link.title}: ${link.description}`}
-              >
-                <span className="contact-card__corner" aria-hidden="true" />
-                <SvgIcon name={link.icon} className="contact-card__icon" />
-                <span className="contact-card__content">
-                  <span className="contact-card__title">{link.title}</span>
-                  <span className="contact-card__description">
-                    {link.description}
-                  </span>
-                </span>
-                <span className="contact-card__footer">
-                  <SvgIcon
-                    name="external-link"
-                    className="contact-card__arrow"
-                  />
-                </span>
-              </a>
-            ))}
-          </div>
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,180px),1fr))] gap-3.5">
+          {contacts.map((c) => (
+            <a
+              key={c.title}
+              href={c.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={c.title}
+              className="relative flex min-h-[190px] flex-col rounded-[18px] border border-white/[.24] bg-white/[.055] p-[22px] text-white transition-[transform,border-color] duration-[180ms] hover:-translate-y-1 hover:border-accent/70 hover:bg-white/[.09]"
+            >
+              <img src={icon(c.icon)} alt="" width="40" height="40" loading="lazy" className="mb-auto size-10" />
+              <span className="mt-7 text-[17px] font-black tracking-[.08em] uppercase">{c.title}</span>
+              <span className="mt-2 text-[15px] leading-normal text-white/80">{c.description}</span>
+              <img src={icon("external-link")} alt="" width="20" height="20" loading="lazy" className="absolute top-5 right-5 size-5 opacity-80" />
+            </a>
+          ))}
         </div>
       </div>
-    </section>
+
+      <p className="mt-10 mb-0 text-sm text-white/75">© 2026 Kourosh Esmaeil Tajer · Eindhoven, NL</p>
+    </Section>
   );
 }

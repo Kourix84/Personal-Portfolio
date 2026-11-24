@@ -1,260 +1,68 @@
-import React, { useRef, useState } from "react";
-import aboutImageTwo from "../assets/img2.jpg";
-import horseImage from "../assets/horse.jpg";
-import skiImage from "../assets/ski.jpg";
-import eventImage from "../assets/event.jpg";
+import React from "react";
+import Section, { Eyebrow, sectionTitleClass } from "./Section.jsx";
+import portrait from "../assets/portrait.webp";
 
-const tabs = [
-  { id: "story", label: "About me" },
-  { id: "experience", label: "Experience" },
-  { id: "hobbies", label: "Hobbies" },
-];
-
-const aboutParagraphs = [
-  "I am Kourosh, a Media Design student at Fontys University of Applied Sciences, specialising in mobile app development, front-end development, and UI/UX design.",
-  "I like turning ideas into usable digital products, from early concept and user flows to polished interfaces and working code.",
-  "Outside of project work, I am active in the Fontys ICT community and enjoy roles where I can combine planning, communication, and hands-on delivery.",
-];
-
-const timelineItems = [
-  {
-    semester: "Semester 1",
-    title: "Start Semester",
-    description:
-      "Started building a foundation in media design, visual communication, and practical front-end basics.",
-  },
-  {
-    semester: "Semester 2",
-    title: "Interactive Media",
-    description:
-      "Worked on more interactive web experiences, improving usability, responsive layout, and project structure.",
-  },
-  {
-    semester: "Semester 3",
-    title: "Front-end Development",
-    description:
-      "Connected interface design with backend logic, APIs, and real user flows across larger assignments.",
-  },
-  {
-    semester: "Semester 4",
-    title: "Mobile App Development",
-    description:
-      "Focused more deeply on mobile app development, front-end engineering, and UI/UX design practice.",
-  },
-  {
-    semester: "Semester 5",
-    title: "Internship at ASML",
-    description:
-      "Applied design and development skills in a more professional workflow with stronger ownership and delivery.",
-  },
-];
-
-const hobbyItems = [
-  {
-    title: "Horse riding",
-    image: horseImage,
-    description:
-      "Show jumping and training have taught me focus, patience, and quick decision-making under pressure.",
-  },
-  {
-    title: "Skiing",
-    image: skiImage,
-    description:
-      "Skiing is one of the ways I reset, stay active, and challenge myself outside of design and development.",
-  },
-  {
-    title: "Event Organization",
-    image: eventImage,
-    description:
-      "Organizing events and meetups for the Fontys ICT community has been a rewarding way to connect, share knowledge, and build a stronger network.",
-  },
+const EXPERIENCE = [
+  { period: "S6 · Sep – Feb", title: "Minor · Virtual Production", line: "Real-time 3D, LED-wall shoots and in-camera effects for film and media." },
+  { period: "Feb – Jul 2026", title: "Intern · ASML", line: "Designed and built an internal Python package platform end to end.", now: true },
+  { period: "2024 – now", title: "Board member · PROXY", line: "Marketing and events for the Fontys ICT community." },
+  { period: "Semester 4", title: "Mobile app development", line: "Swift, SwiftUI and UI/UX practice — Not a Cook Book." },
+  { period: "Semester 3", title: "Front-end development", line: "Connected interfaces to APIs and real user flows." },
+  { period: "Semester 1–2", title: "Foundations & interactive media", line: "Visual design, usability and responsive web." },
 ];
 
 export default function AboutSection() {
-  const sectionRef = useRef(null);
-  const [activeTab, setActiveTab] = useState(tabs[0].id);
-  const [activeTimelineIndex, setActiveTimelineIndex] = useState(0);
-  const activeTimelineItem = timelineItems[activeTimelineIndex];
-
-  const scrollAboutIntoView = () => {
-    sectionRef.current?.scrollIntoView({ block: "start" });
-  };
-
-  const selectTab = (tabId) => {
-    setActiveTab(tabId);
-    scrollAboutIntoView();
-  };
-
-  const selectTimelineItem = (index) => {
-    setActiveTimelineIndex(index);
-    scrollAboutIntoView();
-  };
-
-  const showPreviousSemester = () => {
-    setActiveTimelineIndex((current) =>
-      current === 0 ? timelineItems.length - 1 : current - 1,
-    );
-    scrollAboutIntoView();
-  };
-
-  const showNextSemester = () => {
-    setActiveTimelineIndex((current) =>
-      current === timelineItems.length - 1 ? 0 : current + 1,
-    );
-    scrollAboutIntoView();
-  };
-
   return (
-    <section id="about" className="section section--about" ref={sectionRef}>
-      <div className="section__inner section__inner--wide">
-        <div className="about-section__header">
-          <div>
-            <p className="section__eyebrow">About</p>
-            <h2 className="section__title">A bit about me</h2>
+    <Section id="about" innerClassName="flex flex-col gap-[clamp(48px,7vw,80px)]">
+      <div>
+        <Eyebrow>03 — About</Eyebrow>
+        <h2 id="about-title" className={`${sectionTitleClass} mb-9`}>
+          A bit about me
+        </h2>
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] items-center gap-[clamp(28px,5vw,64px)]">
+          <div className="aspect-[4/5] max-h-[540px] overflow-hidden rounded-[20px] border border-white/[.24] shadow-[0_20px_50px_rgba(0,0,0,.45)]">
+            <img
+              src={portrait}
+              alt="Portrait of Kourosh"
+              width="1086"
+              height="724"
+              loading="lazy"
+              decoding="async"
+              className="block h-full w-full object-cover object-[64%_48%]" />
           </div>
-
-          <div className="about-tabs" role="tablist" aria-label="About section tabs">
-            {tabs.map((tab) => (
-              <button
-                aria-controls={`about-panel-${tab.id}`}
-                aria-selected={activeTab === tab.id}
-                className="about-tabs__button"
-                id={`about-tab-${tab.id}`}
-                key={tab.id}
-                onClick={() => selectTab(tab.id)}
-                role="tab"
-                type="button"
-              >
-                {tab.label}
-              </button>
-            ))}
+          <div className="flex max-w-[600px] flex-col gap-[18px]">
+            <p className="m-0 text-[clamp(24px,2.6vw,34px)] leading-tight text-pretty">
+              I'm Kourosh — half designer, half developer, and happiest when an idea becomes something people can{" "}
+              <em className="text-accent">actually use</em>.
+            </p>
+            <p className="m-0 text-lg leading-[1.7] text-white/[.88]">
+              I study ICT at Fontys University of Applied Sciences, with a focus on full-stack, mobile and UI/UX. On
+              the board of PROXY, I help organise events for the Fontys ICT community.
+            </p>
           </div>
-        </div>
-
-        <div className="about-panels">
-          {activeTab === "story" && (
-            <article
-              aria-labelledby="about-tab-story"
-              className="about-panel about-panel--story"
-              id="about-panel-story"
-              role="tabpanel"
-            >
-              <div className="about-portrait">
-                <img src={aboutImageTwo} alt="Kourosh portrait placeholder" />
-              </div>
-
-              <div className="about-copy">
-                <span className="about-copy__marker">My story</span>
-                <h3>Design, code, and practical delivery.</h3>
-                {aboutParagraphs.map((paragraph) => (
-                  <p className="section__body" key={paragraph}>
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            </article>
-          )}
-
-          {activeTab === "experience" && (
-            <article
-              aria-labelledby="about-tab-experience"
-              className="about-panel about-panel--experience"
-              id="about-panel-experience"
-              role="tabpanel"
-            >
-              <div className="experience-stage">
-                <button
-                  aria-label="Show previous semester"
-                  className="experience-stage__arrow"
-                  onClick={showPreviousSemester}
-                  type="button"
-                >
-                  <svg aria-hidden="true" viewBox="0 0 24 24">
-                    <path d="M15 6 9 12l6 6" />
-                  </svg>
-                </button>
-
-                <div className="experience-stage__content">
-                  <p className="experience-stage__kicker">Experience timeline</p>
-                  <h3>{activeTimelineItem.semester}</h3>
-                  <h4>{activeTimelineItem.title}</h4>
-                  <p>{activeTimelineItem.description}</p>
-                </div>
-
-                <button
-                  aria-label="Show next semester"
-                  className="experience-stage__arrow"
-                  onClick={showNextSemester}
-                  type="button"
-                >
-                  <svg aria-hidden="true" viewBox="0 0 24 24">
-                    <path d="m9 6 6 6-6 6" />
-                  </svg>
-                </button>
-              </div>
-
-              <ol
-                className="experience-timeline"
-                style={{ "--timeline-count": timelineItems.length }}
-              >
-                {timelineItems.map((item, index) => (
-                  <li
-                    className={
-                      index <= activeTimelineIndex
-                        ? "experience-timeline__item experience-timeline__item--filled"
-                        : "experience-timeline__item"
-                    }
-                    key={item.semester}
-                  >
-                    <button
-                      aria-label={`Show ${item.semester}`}
-                      aria-pressed={activeTimelineIndex === index}
-                      className="experience-timeline__button"
-                      onClick={() => selectTimelineItem(index)}
-                      type="button"
-                    >
-                      <span aria-hidden="true" className="experience-timeline__dot" />
-                      <span className="experience-timeline__label">
-                        {item.semester}
-                      </span>
-                    </button>
-                  </li>
-                ))}
-              </ol>
-            </article>
-          )}
-
-          {activeTab === "hobbies" && (
-            <article
-              aria-labelledby="about-tab-hobbies"
-              className="about-panel about-panel--hobbies"
-              id="about-panel-hobbies"
-              role="tabpanel"
-            >
-              <div className="hobby-intro">
-                <span className="about-copy__marker">Beyond the screen</span>
-                <h3>Hobbies and extra things I do.</h3>
-                {/* <p className="section__body">
-                  These are the activities that keep me active, focused, and balanced
-                  next to my design and development work.
-                </p> */}
-              </div>
-
-              <div className="hobby-grid">
-                {hobbyItems.map((hobby) => (
-                  <article className="hobby-card" key={hobby.title} tabIndex={0}>
-                    <img src={hobby.image} alt="" aria-hidden="true" />
-                    <div className="hobby-card__overlay">
-                      <h4>{hobby.title}</h4>
-                      <p>{hobby.description}</p>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </article>
-          )}
         </div>
       </div>
-    </section>
+
+      <div>
+        <h3 className="mt-0 mb-5 text-[clamp(26px,2.6vw,34px)] font-semibold">Experience</h3>
+        <ol className="m-0 list-none border-t border-white/20 p-0">
+          {EXPERIENCE.map((item) => (
+            <li
+              key={item.title}
+              className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,200px),1fr))] items-baseline gap-x-8 gap-y-1.5 border-b border-white/20 px-1 py-5"
+            >
+              <span
+                className={`flex items-center gap-2.5 text-[15px] font-bold ${item.now ? "text-accent" : "text-white/75"}`}
+              >
+                <span className={`size-2 rounded-full ${item.now ? "bg-accent" : "bg-white/35"}`} />
+                {item.period}
+              </span>
+              <span className="text-[21px] font-semibold">{item.title}</span>
+              <span className="text-base leading-normal text-white/[.82]">{item.line}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </Section>
   );
 }
