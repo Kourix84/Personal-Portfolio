@@ -57,7 +57,7 @@ export default function TechStacks() {
         <div
           role="group"
           aria-label="Filter tools"
-          className="flex flex-wrap gap-1.5 rounded-full border border-white/20 bg-[rgba(18,22,21,.35)] p-[5px] backdrop-blur-[6px]"
+          className="flex flex-wrap gap-1.5 rounded-full border border-white/20 bg-[rgba(18,22,21,.35)] p-[5px] backdrop-blur-[6px] max-md:grid max-md:w-full max-md:grid-cols-3 max-md:gap-1 max-md:rounded-[22px]"
         >
           {CATEGORIES.map((cat) => {
             const on = filter === cat.id;
@@ -67,7 +67,7 @@ export default function TechStacks() {
                 type="button"
                 aria-pressed={on}
                 onClick={() => setFilter(cat.id)}
-                className={`min-h-[38px] cursor-pointer rounded-full border px-3.5 py-2 font-[inherit] text-sm font-bold whitespace-nowrap hover:text-white ${
+                className={`min-h-[38px] cursor-pointer rounded-full border px-3.5 py-2 max-md:px-2 font-[inherit] text-sm font-bold whitespace-nowrap hover:text-white ${
                   on ? "border-accent bg-accent text-ink hover:text-ink" : "border-transparent bg-transparent text-white/80"
                 }`}
               >
@@ -78,7 +78,7 @@ export default function TechStacks() {
         </div>
       </div>
 
-      <ul className="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(118px,1fr))] gap-3 p-0">
+      <ul className="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(118px,1fr))] gap-3 p-0 max-md:grid-cols-3 max-md:gap-2">
         {TOOLS.map((tool) => {
           const visible = filter === "all" || filter === tool.category;
           const highlighted = visible && filter !== "all";
@@ -86,7 +86,7 @@ export default function TechStacks() {
             <li
               key={tool.label}
               title={tool.label}
-              className={`relative flex aspect-square flex-col justify-between rounded-2xl border p-3.5 transition-[opacity,transform,border-color,background] duration-[260ms] ${
+              className={`relative flex aspect-square flex-col justify-between rounded-2xl border p-3.5 max-md:p-2.5 transition-[opacity,transform,border-color,background] duration-[260ms] ${
                 visible ? "opacity-100" : "opacity-[.22]"
               } ${
                 highlighted
@@ -95,14 +95,14 @@ export default function TechStacks() {
               }`}
             >
               <span
-                className={`text-[11px] font-extrabold tracking-[.14em] uppercase ${
+                className={`text-[11px] font-extrabold tracking-[.14em] uppercase max-md:text-[9px] ${
                   highlighted ? "text-accent" : "text-white/60"
                 }`}
               >
                 {CATEGORY_LABEL[tool.category]}
               </span>
-              <img src={tool.icon} alt="" width="34" height="34" loading="lazy" className="size-[34px] self-center" />
-              <span className="text-[15px] leading-[1.1] font-bold">{tool.label}</span>
+              <img src={tool.icon} alt="" width="34" height="34" loading="lazy" className="size-[34px] self-center max-md:size-7" />
+              <span className="text-[15px] leading-[1.1] font-bold max-md:text-[13px]">{tool.label}</span>
             </li>
           );
         })}

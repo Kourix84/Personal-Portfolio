@@ -16,7 +16,7 @@ export default function Navbar({ active }) {
     <header className="pointer-events-none fixed top-0 right-0 left-[70px] z-40 flex items-center justify-between gap-3 px-[18px] py-3 max-md:left-0 max-md:p-2">
       <nav
         aria-label="Primary"
-        className="pointer-events-auto flex max-w-full gap-1 overflow-x-auto rounded-full border border-white/[.18] bg-[rgba(18,22,21,.28)] p-1 shadow-[0_14px_34px_rgba(0,0,0,.22)] backdrop-blur-[10px]"
+        className="pointer-events-auto flex max-w-full gap-1 overflow-x-auto rounded-full [scrollbar-width:none] max-md:w-full max-md:justify-between max-md:gap-0.5 [&::-webkit-scrollbar]:hidden border border-white/[.18] bg-[rgba(18,22,21,.28)] p-1 shadow-[0_14px_34px_rgba(0,0,0,.22)] backdrop-blur-[10px]"
       >
         {NAV.map((item) => {
           const on = active === item.id;
@@ -25,7 +25,7 @@ export default function Navbar({ active }) {
               key={item.id}
               href={item.href}
               aria-current={on ? "location" : undefined}
-              className={`inline-flex min-h-[38px] items-center rounded-full border px-4 py-2 text-[17px] leading-none font-bold whitespace-nowrap transition-all duration-[180ms] hover:border-accent/50 hover:text-white ${
+              className={`inline-flex min-h-[38px] items-center rounded-full border px-4 py-2 text-[17px] leading-none max-md:px-3 max-md:text-[15px] ${item.id === "home" ? "max-md:hidden" : ""} font-bold whitespace-nowrap transition-all duration-[180ms] hover:border-accent/50 hover:text-white ${
                 on
                   ? "border-accent/50 bg-[linear-gradient(135deg,rgba(247,165,59,.24),rgba(255,255,255,.08))] text-white shadow-[0_10px_24px_rgba(0,0,0,.22),0_0_22px_rgba(247,165,59,.16)]"
                   : "border-transparent text-white/[.78]"
