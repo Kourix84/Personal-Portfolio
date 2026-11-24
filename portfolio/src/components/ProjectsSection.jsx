@@ -3,8 +3,6 @@ import Section, { sectionTitleClass } from "./Section.jsx";
 import icon from "../data/icons.js";
 import asmlImage from "../assets/asml.webp";
 import notACookBookImage from "../assets/not-a-cook-book.webp";
-import pioperaImage from "../assets/piopera.webp";
-import nasmakImage from "../assets/nasmak.webp";
 
 const tech = (label, iconName) => ({ label, icon: icon(iconName) });
 
@@ -39,35 +37,6 @@ const projects = [
     links: [
       { label: "Figma ↗", href: "https://www.figma.com/design/Vlumgo2fqvjscuRtyxD0ce/Not-a-cookbook?node-id=0-1" },
       { label: "GitHub ↗", href: "https://github.com/Kourix84/not-a-cook-book" },
-    ],
-  },
-  {
-    title: "Piopera",
-    type: "Offline-first PWA",
-    year: "2025",
-    period: "Feb – Jun 2025",
-    image: pioperaImage,
-    alt: "Piopera board game companion app",
-    line: "A companion app that brings 150+ mystery questions to a physical board game — even offline.",
-    tech: [tech("React", "react"), tech("IndexedDB", "sqlite"), tech("Figma", "figma")],
-    links: [
-      { label: "Live demo ↗", href: "https://piopera.netlify.app/", primary: true },
-      { label: "GitHub ↗", href: "https://github.com/Kourix84/piopera" },
-      { label: "Figma ↗", href: "https://www.figma.com/design/VsheeKflt0E9815ucCBzWR/Board-Game-App?node-id=0-1" },
-    ],
-  },
-  {
-    title: "Nasmak PM",
-    type: "Band website",
-    year: "2024",
-    period: "Sep 2024 – Jan 2025",
-    image: nasmakImage,
-    alt: "Nasmak PM band website",
-    line: "A website for an Eindhoven band on tour — with an Easter egg hidden for fans.",
-    tech: [tech("Figma", "figma"), tech("HTML", "html"), tech("CSS", "css"), tech("JavaScript", "javascript")],
-    links: [
-      { label: "Live site ↗", href: "https://i539945.hera.fontysict.net/Nasmak-PM/", primary: true },
-      { label: "Figma ↗", href: "https://www.figma.com/design/QHYNmWlb9jcXmcAeVGvFUM/Nasmak-PM?node-id=0-1" },
     ],
   },
 ];

@@ -6,8 +6,8 @@ const EXPERIENCE = [
   { period: "Feb – Jul 2026", title: "Intern · ASML", line: "Designed and built an internal Python package platform end to end.", now: true },
   { period: "2024 – now", title: "Board member · PROXY", line: "Marketing and events for the Fontys ICT community." },
   { period: "Semester 4", title: "Mobile app development", line: "Swift, SwiftUI and UI/UX practice — Not a Cook Book." },
-  { period: "Semester 3", title: "Front-end development", line: "Connected interfaces to APIs and real user flows — Piopera." },
-  { period: "Semester 1–2", title: "Foundations & interactive media", line: "Visual design, usability and responsive web — Nasmak PM." },
+  { period: "Semester 3", title: "Front-end development", line: "Connected interfaces to APIs and real user flows." },
+  { period: "Semester 1–2", title: "Foundations & interactive media", line: "Visual design, usability and responsive web." },
 ];
 
 export default function AboutSection() {
