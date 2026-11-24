@@ -31,7 +31,7 @@ export default function Hero() {
         <div className="flex flex-wrap items-center gap-[22px]">
           <span className="inline-flex items-center gap-2.5 rounded-full border border-white/[.24] bg-black/30 px-4 py-2.5 text-sm font-bold backdrop-blur-[6px]">
             <span className="size-2 rounded-full bg-accent shadow-[0_0_14px_rgba(247,165,59,.8)]" />
-            Now: intern at ASML
+            Now: Finishing my final year project at Fontys ICT
           </span>
           <a
             href="#projects"
