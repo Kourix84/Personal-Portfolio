@@ -1,50 +1,19 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import App from "./App";
 import "./styles/global.css";
 
-const DELAY_BEFORE_FLASH_MS = 1800;
-const FLASH_DURATION_MS = 700;
-
 const rootElement = document.getElementById("root");
-
-ReactDOM.createRoot(rootElement).render(
+const app = (
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <App />
   </React.StrictMode>
 );
 
-function hidePreloaderWithFlash() {
-  const preloader = document.getElementById('preloader')
-  if (!preloader) return
-
-  preloader.classList.add('preloader--flash')
-
-  setTimeout(() => {
-    preloader.classList.add('preloader--hide')
-
-    document.documentElement.classList.remove('preloader-lock')
-    document.body.classList.remove('preloader-lock')
-
-    preloader.addEventListener(
-      'transitionend',
-      () => {
-        if (preloader.parentNode) preloader.parentNode.removeChild(preloader)
-      },
-      { once: true }
-    )
-  }, FLASH_DURATION_MS) 
+// Production builds ship prerendered HTML (scripts/prerender.mjs), so hydrate it.
+// The dev server serves an empty #root, so render from scratch there.
+if (rootElement.hasChildNodes()) {
+  hydrateRoot(rootElement, app);
+} else {
+  createRoot(rootElement).render(app);
 }
-
-window.addEventListener(
-  'load',
-  () => {
-    setTimeout(() => {
-      hidePreloaderWithFlash()
-    }, DELAY_BEFORE_FLASH_MS)
-  },
-  { once: true }
-)

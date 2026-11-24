@@ -1,146 +1,109 @@
-import React from "react";
+import React, { useState } from "react";
+import Section, { sectionTitleClass } from "./Section.jsx";
+import icon from "../data/icons.js";
 
-const iconModules = import.meta.glob("../assets/icons/*.svg", {
-  eager: true,
-  import: "default",
-  query: "?raw",
-});
-
-const iconSvgByName = Object.fromEntries(
-  Object.entries(iconModules).map(([path, svg]) => {
-    const fileName = path.split("/").pop().replace(".svg", "");
-    return [fileName, svg];
-  }),
-);
-
-const TechIcon = ({ name }) => {
-  const iconSvg = iconSvgByName[name];
-
-  if (!iconSvg) return null;
-
-  return (
-    <span
-      className="tech-stack-chip__icon"
-      aria-hidden="true"
-      dangerouslySetInnerHTML={{ __html: iconSvg }}
-    />
-  );
-};
-
-const stackGroups = [
-  {
-    title: "Frontend",
-    description:
-      "Responsive, component-based interfaces focused on clarity, usability, and maintainable structure.",
-    tools: [
-      // { label: "HTML", icon: "html" },
-      // { label: "CSS", icon: "css" },
-      { label: "JavaScript", icon: "javascript" },
-      { label: "TypeScript", icon: "typescript" },
-      { label: "React", icon: "react" },
-      { label: "Angular", icon: "angular" },
-      { label: "Next.js", icon: "next" },
-      { label: "Tailwind CSS", icon: "tailwind" },
-      { label: "Jinja", icon: "jinja" },
-    ],
-  },
-  {
-    title: "Backend",
-    description:
-      "Structured application logic, APIs, and server-side systems built for real functionality and growth.",
-    tools: [
-      { label: "Swift", icon: "swift" },
-      { label: "Swift UI", icon: "swiftui" },
-      { label: "Python", icon: "python" },
-      { label: "FastAPI", icon: "fastapi" },
-      { label: "Flask", icon: "flask" },
-    ],
-  },
-  {
-    title: "Databases",
-    description:
-      "Relational databases used to store, manage, and query application data across full-stack projects.",
-    tools: [
-      { label: "PostgreSQL", icon: "postgresql" },
-      { label: "MSSQL", icon: "mssql" },
-      { label: "SQLite", icon: "sqlite" },
-    ],
-  },
-  {
-    title: "Infrastructure & Deployment",
-    description:
-      "Deploying applications with practical infrastructure, containerization, and real delivery workflows.",
-    tools: [
-      { label: "Docker", icon: "docker" },
-      // { label: "Raspberry Pi", icon: "raspberry" },
-      { label: "Cloudflare", icon: "cloudflare" },
-      { label: "Vercel", icon: "vercel" },
-    ],
-  },
-  {
-    title: "Workflow",
-    description:
-      "Improving delivery speed and reliability through version control, automation, and structured deployment workflows.",
-    tools: [
-      { label: "Git", icon: "git" },
-      { label: "CI/CD", icon: "cicd" },
-    ],
-  },
-  {
-    title: "APIs & Integrations",
-    description:
-      "Integrating external services for authentication, payments, AI functionality, and backend services.",
-    tools: [
-      { label: "OAuth", icon: "oauth" },
-      { label: "Stripe", icon: "stripe" },
-      { label: "OpenAI", icon: "openai" },
-    ],
-  },
-  {
-    title: "UI/UX Design",
-    description:
-      "Creating intuitive, user-centered designs that enhance the overall user experience.",
-    tools: [
-      { label: "Figma", icon: "figma" },
-      { label: "Adobe XD", icon: "adobe-xd" },
-      { label: "Double Diamond", icon: "double-diamond" },
-      { label: "Adobe", icon: "adobe" },
-    ],
-  },
+const CATEGORIES = [
+  { id: "all", label: "All" },
+  { id: "fe", label: "Frontend" },
+  { id: "be", label: "Backend" },
+  { id: "data", label: "Data" },
+  { id: "ops", label: "Cloud" },
+  { id: "ux", label: "Design" },
 ];
 
+const CATEGORY_LABEL = Object.fromEntries(CATEGORIES.map((c) => [c.id, c.label]));
+
+const TOOLS = [
+  ["React", "react", "fe"],
+  ["Next.js", "next", "fe"],
+  ["TypeScript", "typescript", "fe"],
+  ["JavaScript", "javascript", "fe"],
+  ["Angular", "angular", "fe"],
+  ["Tailwind", "tailwind", "fe"],
+  ["Jinja", "jinja", "fe"],
+  ["Python", "python", "be"],
+  ["Flask", "flask", "be"],
+  ["FastAPI", "fastapi", "be"],
+  ["Swift", "swift", "be"],
+  ["SwiftUI", "swiftui", "be"],
+  ["OAuth", "oauth", "be"],
+  ["OpenAI", "openai", "be"],
+  ["Stripe", "stripe", "be"],
+  ["PostgreSQL", "postgresql", "data"],
+  ["MSSQL", "mssql", "data"],
+  ["SQLite", "sqlite", "data"],
+  ["Docker", "docker", "ops"],
+  ["Cloudflare", "cloudflare", "ops"],
+  ["Vercel", "vercel", "ops"],
+  ["Git", "git", "ops"],
+  ["CI/CD", "cicd", "ops"],
+  ["Figma", "figma", "ux"],
+  ["Adobe XD", "adobe-xd", "ux"],
+  ["Double Diamond", "double-diamond", "ux"],
+].map(([label, iconName, category]) => ({ label, icon: icon(iconName), category }));
+
 export default function TechStacks() {
+  const [filter, setFilter] = useState("all");
+
   return (
-    <section id="stacks" className="section section--stacks">
-      <div className="section__inner section__inner--wide">
-        <p className="section__eyebrow">Tech stack</p>
-        <h2 className="section__title">Technologies I work with</h2>
-        <p className="section__subtitle">
-          A focused stack across frontend, backend, cloud, and delivery. I care
-          about choosing tools that fit the problem and support maintainable,
-          real-world software.
-        </p>
-
-        <div className="tech-stack-grid">
-          {stackGroups.map((group) => (
-            <article className="tech-stack-card" key={group.title}>
-              <h3 className="tech-stack-card__title">{group.title}</h3>
-              <p className="tech-stack-card__description">
-                {group.description}
-              </p>
-
-              <ul className="tech-stack-card__tools">
-                {group.tools.map((tool) => (
-                  <li className="tech-stack-chip" key={tool.label}>
-                    <TechIcon name={tool.icon} />
-                    <span>{tool.label}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
+    <Section id="stacks" eyebrow="02 — Stack">
+      <div className="mb-7 flex flex-wrap items-end justify-between gap-5">
+        <h2 id="stacks-title" className={sectionTitleClass}>
+          My toolkit
+        </h2>
+        <div
+          role="group"
+          aria-label="Filter tools"
+          className="flex flex-wrap gap-1.5 rounded-full border border-white/20 bg-[rgba(18,22,21,.35)] p-[5px] backdrop-blur-[6px]"
+        >
+          {CATEGORIES.map((cat) => {
+            const on = filter === cat.id;
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                aria-pressed={on}
+                onClick={() => setFilter(cat.id)}
+                className={`min-h-[38px] cursor-pointer rounded-full border px-3.5 py-2 font-[inherit] text-sm font-bold whitespace-nowrap hover:text-white ${
+                  on ? "border-accent bg-accent text-ink hover:text-ink" : "border-transparent bg-transparent text-white/80"
+                }`}
+              >
+                {cat.label}
+              </button>
+            );
+          })}
         </div>
       </div>
-    </section>
+
+      <ul className="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(118px,1fr))] gap-3 p-0">
+        {TOOLS.map((tool) => {
+          const visible = filter === "all" || filter === tool.category;
+          const highlighted = visible && filter !== "all";
+          return (
+            <li
+              key={tool.label}
+              title={tool.label}
+              className={`relative flex aspect-square flex-col justify-between rounded-2xl border p-3.5 transition-[opacity,transform,border-color,background] duration-[260ms] ${
+                visible ? "opacity-100" : "opacity-[.22]"
+              } ${
+                highlighted
+                  ? "-translate-y-[3px] border-accent/60 bg-accent/[.14]"
+                  : "border-white/[.18] bg-[rgba(124,124,124,.2)]"
+              }`}
+            >
+              <span
+                className={`text-[11px] font-extrabold tracking-[.14em] uppercase ${
+                  highlighted ? "text-accent" : "text-white/60"
+                }`}
+              >
+                {CATEGORY_LABEL[tool.category]}
+              </span>
+              <img src={tool.icon} alt="" width="34" height="34" loading="lazy" className="size-[34px] self-center" />
+              <span className="text-[15px] leading-[1.1] font-bold">{tool.label}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </Section>
   );
 }

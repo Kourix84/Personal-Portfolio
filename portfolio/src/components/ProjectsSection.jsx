@@ -1,274 +1,193 @@
-import React from "react";
-import notACookBookImage from "../assets/not-a-cook-book.jpg";
-import pioperaImage from "../assets/piopera.jpg";
-import nasmakImage from "../assets/nasmak.jpg";
-import asmlImage from "../assets/ASML.jpg";
+import React, { useEffect, useState } from "react";
+import Section, { sectionTitleClass } from "./Section.jsx";
+import icon from "../data/icons.js";
+import asmlImage from "../assets/asml.webp";
+import notACookBookImage from "../assets/not-a-cook-book.webp";
+import pioperaImage from "../assets/piopera.webp";
+import nasmakImage from "../assets/nasmak.webp";
 
-const iconModules = import.meta.glob("../assets/icons/*.svg", {
-  eager: true,
-  import: "default",
-  query: "?raw",
-});
-
-const iconSvgByName = Object.fromEntries(
-  Object.entries(iconModules).map(([path, svg]) => {
-    const fileName = path.split("/").pop().replace(".svg", "");
-    return [fileName, svg];
-  }),
-);
-
-const techIconByLabel = {
-  css: "css",
-  figma: "figma",
-  html: "html",
-  indexeddb: "sqlite",
-  javascript: "javascript",
-  openai: "openai",
-  swift: "swift",
-  react: "react",
-  swiftui: "swiftui",
-  python: "python",
-  flask: "flask",
-  postgresql: "postgresql",
-  oauth: "oauth",
-  jinja: "jinja",
-  sqlite: "sqlite",
-};
-
-const linkLabels = {
-  github: "GitHub",
-  live: "Live demo",
-  figma: "Figma",
-};
-
-const visibleHighlights = 3;
+const tech = (label, iconName) => ({ label, icon: icon(iconName) });
 
 const projects = [
   {
-    id: "ASML",
-    title: "ASML Package Index – Internship Project",
-    short:
-      "Developed an internal Python package management platform with search, uploads, validation, and approval workflows.",
-    role: "UI/UX design, Fullstack development",
-    tech: ["Python", "Flask", "Jinja", "JavaScript", "SQLite", "OAuth", "Figma",],
-    period: "Feb 2026 – July 2026",
-    heroImage: asmlImage,
-    summary:
-      "During my internship at ASML, I developed an internal Python package index using Flask, Jinja, and SQLAlchemy. The platform helps employees upload, manage, search, and review Python packages through a structured and user-friendly workflow. I worked on the frontend, backend, database integration, authentication, validation, UX improvements, testing, and code optimisation.",
-    highlights: [
-      "Developed an internal Python package index for ASML employees.",
-      "Improved the user experience through wireframes, stakeholder feedback, and user testing",
-      "Built the application using Python, Flask, Jinja, JavaScript, and SQLAlchemy",
-      "Added search, filtering, validation, metadata extraction, and package status management.",
-      "Implemented authentication, security checks, and protected routes.",
-      "Worked on frontend development, backend logic, database integration, testing, and code optimisation."
+    title: "ASML Package Index",
+    type: "Internship",
+    year: "2026",
+    period: "Feb – Jul 2026",
+    image: asmlImage,
+    alt: "ASML lithography system",
+    line: "One place for ASML engineers to upload, find and approve Python packages.",
+    tech: [
+      tech("Python", "python"),
+      tech("Flask", "flask"),
+      tech("Jinja", "jinja"),
+      tech("SQLite", "sqlite"),
+      tech("OAuth", "oauth"),
+      tech("Figma", "figma"),
     ],
-    links: {
-      github: "",
-      live: "",
-      Figma:
-        "",
-    },
+    links: [],
   },
   {
-    id: "not-a-cook-book",
-    title: "Not a Cook Book – Mobile App Concept",
-    short:
-      "Concept app and design prototype for discovering recipes based on ingredients with AI assistance.",
-    role: "Mobile concept, UX, prototype, Swift Development",
-    tech: ["Swift", "SwiftUI", "Figma", "OPENAI"],
-    period: "Sep 2025 - Oct 2025",
-    heroImage: notACookBookImage,
-    summary:
-      "Not a Cook Book is a concept mobile app that helps users discover recipes based on the ingredients they already have by taking a picture and letting AI analyze the food. It also provides personalized meal suggestions, step-by-step cooking guidance, and a more intuitive way to turn everyday ingredients into creative recipes.",
-    highlights: [
-      "Defined personas and mapped key user journeys.",
-      "Prototyped core flows in SwiftUI.",
-      "Explored AI-assisted suggestions based on play history.",
-      "Created Figma designs for user testing and feedback.",
-      "OPENAI API integration for image recognition and recipe generation.",
-      "Implemented a clean and intuitive UI for easy navigation.",
+    title: "Not a Cook Book",
+    type: "iOS app",
+    year: "2025",
+    period: "Sep – Oct 2025",
+    image: notACookBookImage,
+    alt: "Not a Cook Book app screens",
+    line: "Snap your ingredients — AI turns them into a recipe you can cook tonight.",
+    tech: [tech("Swift", "swift"), tech("SwiftUI", "swiftui"), tech("OpenAI", "openai"), tech("Figma", "figma")],
+    links: [
+      { label: "Figma ↗", href: "https://www.figma.com/design/Vlumgo2fqvjscuRtyxD0ce/Not-a-cookbook?node-id=0-1" },
+      { label: "GitHub ↗", href: "https://github.com/Kourix84/not-a-cook-book" },
     ],
-    links: {
-      github: "https://github.com/Kourix84/not-a-cook-book.git",
-      live: "",
-      Figma:
-        "https://www.figma.com/design/Vlumgo2fqvjscuRtyxD0ce/Not-a-cookbook?node-id=0-1&t=2LpVtQlvFjtu6S3h-1",
-    },
   },
-
   {
-    id: "piopera",
-    title: "Piopera – Digital Board Game",
-    short:
-      "PWA companion app for a mystery board game with 150+ interactive questions.",
-    role: "Product design, front-end development",
-    tech: ["React", "IndexedDB", "Figma"],
-    period: "Feb 2025 – Jun 2025",
-    heroImage: pioperaImage,
-    summary:
-      "Piopera is a progressive web app that extends a physical mystery board game witah interactive questions, side quests and a digital rulebook.",
-    highlights: [
-      "Designed some parts of the UI/UX for mobile and desktop players.",
-      "Implemented offline-first behaviour using IndexedDB.",
-      "Built an in-game rulebook and side-quest system.",
-      "Optimized performance for low-end devices.",
-      "Designned and developed the game play experience for board game players.",
+    title: "Piopera",
+    type: "Offline-first PWA",
+    year: "2025",
+    period: "Feb – Jun 2025",
+    image: pioperaImage,
+    alt: "Piopera board game companion app",
+    line: "A companion app that brings 150+ mystery questions to a physical board game — even offline.",
+    tech: [tech("React", "react"), tech("IndexedDB", "sqlite"), tech("Figma", "figma")],
+    links: [
+      { label: "Live demo ↗", href: "https://piopera.netlify.app/", primary: true },
+      { label: "GitHub ↗", href: "https://github.com/Kourix84/piopera" },
+      { label: "Figma ↗", href: "https://www.figma.com/design/VsheeKflt0E9815ucCBzWR/Board-Game-App?node-id=0-1" },
     ],
-    links: {
-      github: "https://github.com/Kourix84/piopera.git",
-      live: "https://piopera.netlify.app/",
-      Figma:
-        "https://www.figma.com/design/VsheeKflt0E9815ucCBzWR/Board-Game-App?node-id=0-1&t=A0zKGFKHqYJcaH8l-1",
-    },
   },
-
   {
-    id: "nasmak-website",
-    title: "Nasmak – Website",
-    short:
-      "Website for Nasmak PM, A band based in Eindhoven and Neunen with an Easter Egg implemented.",
-    role: "Web design, front-end development",
-    tech: ["Figma", "HTML", "CSS", "JavaScript"],
-    period: "Sep 2024 - Jan 2025",
-    heroImage: nasmakImage,
-    summary:
-      "Website for Nasmak PM, A band based in Eindhoven and Neunen and having a strong local presence and having a tour around Netherlands every year.",
-    highlights: [
-      "Defined personas and mapped key user journeys.",
-      "Prototyped core flows in SwiftUI with mocked data.",
-      "Explored AI-assisted suggestions based on play history.",
+    title: "Nasmak PM",
+    type: "Band website",
+    year: "2024",
+    period: "Sep 2024 – Jan 2025",
+    image: nasmakImage,
+    alt: "Nasmak PM band website",
+    line: "A website for an Eindhoven band on tour — with an Easter egg hidden for fans.",
+    tech: [tech("Figma", "figma"), tech("HTML", "html"), tech("CSS", "css"), tech("JavaScript", "javascript")],
+    links: [
+      { label: "Live site ↗", href: "https://i539945.hera.fontysict.net/Nasmak-PM/", primary: true },
+      { label: "Figma ↗", href: "https://www.figma.com/design/QHYNmWlb9jcXmcAeVGvFUM/Nasmak-PM?node-id=0-1" },
     ],
-    links: {
-      github: "",
-      live: "https://i539945.hera.fontysict.net/Nasmak-PM/",
-      Figma:
-        "https://www.figma.com/design/QHYNmWlb9jcXmcAeVGvFUM/Nasmak-PM?node-id=0-1&t=xKLVXe95gMZBTKsu-1",
-    },
   },
 ];
 
-const TechIcon = ({ label }) => {
-  const iconName = techIconByLabel[label.toLowerCase().replace(/\s+/g, "")];
-  const iconSvg = iconName ? iconSvgByName[iconName] : null;
+export default function ProjectsSection() {
+  const [selected, setSelected] = useState(0);
+  const current = projects[selected];
 
-  if (!iconSvg) return null;
+  // Warm the other project images once the page is idle, so switching is instant.
+  useEffect(() => {
+    const warm = () => projects.forEach((p) => (new Image().src = p.image));
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(warm);
+      return () => window.cancelIdleCallback(id);
+    }
+    const id = setTimeout(warm, 2000);
+    return () => clearTimeout(id);
+  }, []);
 
   return (
-    <span
-      className="tech-stack-chip__icon"
-      aria-hidden="true"
-      dangerouslySetInnerHTML={{ __html: iconSvg }}
-    />
-  );
-};
+    <Section id="projects" eyebrow="01 — Projects">
+      <h2 id="projects-title" className={`${sectionTitleClass} mb-9`}>
+        Selected work
+      </h2>
 
-const getProjectLinks = (links = {}) =>
-  Object.entries(links)
-    .filter(([, href]) => Boolean(href))
-    .map(([key, href]) => ({
-      href,
-      label: linkLabels[key.toLowerCase()] ?? key,
-    }));
-
-const AnimatedLinkLabel = ({ label }) => (
-  <>
-    <span className="project-card__link-original" aria-hidden="true">
-      {label}
-    </span>
-    <span className="project-card__link-letters" aria-hidden="true">
-      {Array.from(label).map((letter, index) => (
-        <span
-          className="project-card__link-letter"
-          key={`${letter}-${index}`}
-          style={{ "--letter-index": index }}
-        >
-          {letter === " " ? "\u00A0" : letter}
-        </span>
-      ))}
-    </span>
-  </>
-);
-
-function ProjectsSection() {
-  return (
-    <section id="projects" className="section section--projects">
-      <div className="section__inner section__inner--wide">
-        <p className="section__eyebrow">Projects</p>
-        <h2 className="section__title">Selected Works</h2>
-        <p className="section__subtitle">
-          A mix of fullstack, web, mobile, and PWA projects where I combine design,
-          development, and delivery.
-        </p>
-
-        <div className="projects-grid">
-          {projects.map((project, index) => {
-            const projectLinks = getProjectLinks(project.links);
-
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] items-start gap-[clamp(24px,4vw,48px)]">
+        <ol className="m-0 list-none border-t border-white/20 p-0">
+          {projects.map((project, i) => {
+            const on = i === selected;
+            const select = () => setSelected(i);
             return (
-              <article key={project.id} className="project-card">
-                <div className="project-card__media">
-                  <img src={project.heroImage} alt="" aria-hidden="true" />
-                </div>
-                <div className="project-card__header">
-                  <span className="project-card__index">
-                    {String(index + 1).padStart(2, "0")}
+              <li key={project.title} className="border-b border-white/20">
+                <button
+                  type="button"
+                  aria-pressed={on}
+                  onMouseEnter={select}
+                  onFocus={select}
+                  onClick={select}
+                  className={`grid w-full cursor-pointer grid-cols-[52px_minmax(0,1fr)_auto] items-center gap-4 border-0 py-[26px] pr-2 text-left font-[inherit] text-white transition-[background,padding] duration-200 ${
+                    on ? "bg-[linear-gradient(90deg,rgba(247,165,59,.14),rgba(247,165,59,0))] pl-[18px]" : "bg-transparent pl-2"
+                  }`}
+                >
+                  <span className={`text-[15px] font-bold tracking-[.14em] ${on ? "text-accent" : "text-white/60"}`}>
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="project-card__title">{project.title}</h3>
-                  <p className="project-card__role">{project.role}</p>
-                </div>
-                <p className="project-card__period">{project.period}</p>
-                <p className="project-card__short">{project.short}</p>
-                <div className="project-card__details">
-                  <div>
-                    <h4 className="project-card__subheading">Overview</h4>
-                    <p className="project-card__summary">{project.summary}</p>
-                  </div>
-                  <div className="project-card__highlights">
-                    <h4 className="project-card__subheading">Highlights</h4>
-                    <ul>
-                      {project.highlights.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                <ul className="project-card__chips">
-                  {project.tech.map((t) => (
-                    <li className="tech-stack-chip" key={t}>
-                      <TechIcon label={t} />
-                      <span>{t}</span>
-                    </li>
-                  ))}
-                </ul>
-                {projectLinks.length > 0 && (
-                  <div
-                    className="project-card__links"
-                    aria-label={`${project.title} links`}
+                  <span className="grid min-w-0 gap-1.5">
+                    <span
+                      className={`text-[clamp(24px,2.6vw,34px)] leading-[1.05] font-semibold transition-opacity duration-200 ${
+                        on ? "opacity-100" : "opacity-[.62]"
+                      }`}
+                    >
+                      {project.title}
+                    </span>
+                    <span className="text-[15px] text-white/75">
+                      {project.type} · {project.year}
+                    </span>
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className={`text-2xl text-accent transition-opacity duration-200 ${on ? "opacity-100" : "opacity-0"}`}
                   >
-                    {projectLinks.map((link) => (
-                      <a
-                        className="project-card__link"
-                        href={link.href}
-                        key={link.label}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={link.label}
-                      >
-                        <AnimatedLinkLabel label={link.label} />
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </article>
+                    →
+                  </span>
+                </button>
+              </li>
             );
           })}
-        </div>
+        </ol>
+
+        <article
+          aria-live="polite"
+          className="sticky top-[84px] flex flex-col overflow-hidden rounded-[20px] border border-white/[.24] bg-[rgba(124,124,124,.2)] shadow-[0_20px_50px_rgba(0,0,0,.45)] backdrop-blur-[6px]"
+        >
+          <div className="relative aspect-video border-b border-white/[.14] bg-black/45">
+            <img
+              src={current.image}
+              alt={current.alt}
+              width="1200"
+              height="675"
+              loading="lazy"
+              decoding="async"
+              className="block h-full w-full object-contain object-center"
+            />
+            <span className="absolute bottom-4 left-4 rounded-full bg-black/55 px-3 py-[7px] text-[13px] font-bold backdrop-blur-[6px]">
+              {current.period}
+            </span>
+          </div>
+          <div className="flex flex-col gap-[18px] p-[clamp(20px,2.4vw,28px)]">
+            <p className="m-0 text-[clamp(18px,1.6vw,21px)] leading-normal text-pretty">{current.line}</p>
+            <div className="flex flex-wrap items-center gap-2.5">
+              {current.tech.map((t) => (
+                <span
+                  key={t.label}
+                  title={t.label}
+                  className="grid size-10 place-items-center rounded-xl border border-accent/35 bg-accent/[.12]"
+                >
+                  <img src={t.icon} alt={t.label} width="22" height="22" loading="lazy" className="size-[22px]" />
+                </span>
+              ))}
+            </div>
+            {current.links.length > 0 && (
+              <div className="flex flex-wrap gap-2.5 border-t border-white/[.16] pt-[18px]">
+                {current.links.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`inline-flex min-h-[42px] items-center rounded-full border px-4 py-[9px] text-sm font-bold whitespace-nowrap hover:border-accent/[.72] hover:bg-accent/[.16] hover:text-accent ${
+                      link.primary ? "border-accent bg-accent text-ink" : "border-white/20 bg-black/35 text-white"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </article>
       </div>
-    </section>
+    </Section>
   );
 }
-
-ProjectsSection.projectCount = projects.length;
-
-export default ProjectsSection;
