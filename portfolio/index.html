@@ -10,7 +10,10 @@
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://kourix.dev/" />
   <meta name="theme-color" content="#3f504b" />
-  <link rel="icon" type="image/svg+xml" href="./src/assets/K.svg" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
   <!-- Social previews (LinkedIn, WhatsApp, X, Slack…) -->
   <meta property="og:type" content="profile" />
@@ -34,24 +37,60 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "url": "https://kourix.dev/",
-    "mainEntity": {
-      "@type": "Person",
-      "name": "Kourosh Esmaeil Tajer",
-      "url": "https://kourix.dev/",
-      "image": "https://kourix.dev/og-image.jpg",
-      "jobTitle": "Full-Stack Developer & UI/UX Designer",
-      "email": "mailto:hello@kourix.dev",
-      "address": { "@type": "PostalAddress", "addressLocality": "Eindhoven", "addressCountry": "NL" },
-      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Fontys University of Applied Sciences" },
-      "knowsAbout": ["React", "Python", "Flask", "Swift", "SwiftUI", "UI/UX design", "Figma"],
-      "sameAs": [
-        "https://github.com/Kourix84",
-        "https://www.linkedin.com/in/kourosh-esmaeil-tajer/",
-        "https://www.instagram.com/kourosh__e.t/"
-      ]
-    }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://kourix.dev/#website",
+        "url": "https://kourix.dev/",
+        "name": "Kourosh Esmaeil Tajer",
+        "alternateName": [
+          "Kourix",
+          "kourix.dev"
+        ],
+        "inLanguage": "en"
+      },
+      {
+        "@id": "https://kourix.dev/#profile",
+        "@type": "ProfilePage",
+        "url": "https://kourix.dev/",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Kourosh Esmaeil Tajer",
+          "url": "https://kourix.dev/",
+          "image": "https://kourix.dev/og-image.jpg",
+          "jobTitle": "Full-Stack Developer & UI/UX Designer",
+          "email": "mailto:hello@kourix.dev",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Eindhoven",
+            "addressCountry": "NL"
+          },
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Fontys University of Applied Sciences"
+          },
+          "knowsAbout": [
+            "React",
+            "Python",
+            "Flask",
+            "Swift",
+            "SwiftUI",
+            "UI/UX design",
+            "Figma"
+          ],
+          "sameAs": [
+            "https://github.com/Kourix84",
+            "https://www.linkedin.com/in/kourosh-esmaeil-tajer/",
+            "https://www.instagram.com/kourosh__e.t/"
+          ],
+          "@id": "https://kourix.dev/#person"
+        },
+        "isPartOf": {
+          "@id": "https://kourix.dev/#website"
+        },
+        "dateModified": "2026-11-24"
+      }
+    ]
   }
   </script>
 
